@@ -69,7 +69,18 @@ app.run(function(){
 //---------------//
 // appController // 
 //---------------//
-app.controller('appController', ['$scope', '$http', '$firebaseAuth' , function( $scope, $http , $firebaseAuth){
+app.controller('appController', ['$rootScope', '$scope', '$http', '$firebaseAuth' , '$firebaseArray', '$firebaseObject' , function( $rootScope, $scope, $http , $firebaseAuth, $firebaseArray, $firebaseObject ){
+	
+	var $challengeRef = firebase.database().ref().child('challenge');
+	
+	var challengeSync = $firebaseObject($challengeRef);
+
+	challengeSync.$loaded(function(){
+		alert(' new sync');
+	})
+	challengeSync.$bindTo($rootScope, 'challenge');
+
+
 
 /*
 
