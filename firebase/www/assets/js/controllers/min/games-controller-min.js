@@ -1,0 +1,1 @@
+app.controller("gamesController",["$scope","$state",function(e,o){e.games=[{title:"Rochambeer",id:"farkle"}]}]);
