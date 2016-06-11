@@ -412,6 +412,18 @@ hr {
 .left {
   float: left;
 }
+.visible-landscape {
+  display: none;
+}
+.hidden-landscape {
+  display: block;
+}
+.landscape .visible-landscape {
+  display: block;
+}
+.landscape .hidden-landscape {
+  display: none;
+}
 * {
   font-family: 'EB Garamond', serif;
   font-size: 14px;
@@ -1009,20 +1021,8 @@ ui-view {
 }
 /* != Landscape Fix
 -------------------------------------------------------------- */
-.visible-landscape {
-  display: none;
-}
-.hidden-landscape {
-  display: block;
-}
-.landscape .visible-landscape {
-  display: block;
-}
-.landscape .hidden-landscape {
-  display: none;
-}
 .landscape .game-box > .vp-50 {
-  height: auto;
+  height: 85%;
   width: 50%;
   display: block;
   float: left;
