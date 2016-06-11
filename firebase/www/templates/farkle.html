@@ -1,7 +1,10 @@
 <div class="game-box">
 	<div class="row vp-50 game-player">
-		<div class = 'red message'  >
-			<h3>{{message}}</h3>
+		<div class = 'red message' ng-show="message">
+			<div>
+				<h3>{{message}}</h3>
+				<h6 ng-click ="play_game()" ng-show="game_over && made_choice">Play Again?</h6>
+			</div>
 		</div><!-- .choose -->
 		<div ng-click = 'play_game()' class="choose" >
 			<h3>{{ !counting_down ? 'Play?' : countdown }}</h3>
@@ -19,7 +22,7 @@
 	<div class="row vp-50 border-t">
 		<div class="row text-center">
 			<h4 class="ptop-15">Rochambeer</h4>
-			<h4 class = 'red' ng-click ="play_game()" ng-show ="game_over && made_choice">Play Again?</h4>		
+					
 			<p>Water boils Yeast. Yeast ferments Malt. Malt flavors Water. </p>
 		</div><!-- .row -->
 		<div class="rochambeer-controls" >
