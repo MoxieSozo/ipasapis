@@ -184,7 +184,7 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 		lvr.body.collideWorldBounds = true;
 		lvr.animations.add('activate', [0, 2, 4], 10, false);
 	
-		processorText = game.add.text(408, 375, 'Collect ingredients to brew a beer', { fontSize: '24px', fill: '#FFF' });
+		processorText = game.add.text(408, 375, 'Collect ingredients to brew a beer', { fontSize: '24px', font: 'montserrat', fill: '#FFF', align: 'center' });
 		
 		setTimeout(function() {
 			processorText.text = '';
