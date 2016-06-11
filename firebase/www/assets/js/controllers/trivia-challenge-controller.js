@@ -14,17 +14,14 @@ app.controller('triviaChallengeController', ['$scope', '$http', 'averyService','
 		}, 1000)
 		
 		$scope.submit_answer = function(){
-			console.log( $scope.challenge.active_challenge );
-			console.log( $scope.answer );
-			if($scope.challenge.active_challenge.answer.id == $scope.answer.id){
-				alert('you have won!');
+			if($scope.challenge.current_challenge.answer.id == $scope.answer.id){
+				alert('you won')
+				$scope.challenge_won = true;
 			}else{
-				alert('Sorry that is the wrong answer');
-/*
-				$scope.challenge.active_challenge = false;
-				$scope.challenge.current_challenge.active = false;
-*/
+				alert( 'you lost')
+				$scope.challenge_lost = true;
 			}
+			$scope.game_over = true;
 		}
 /*
 	// get the beer from storage if it is available

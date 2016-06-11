@@ -15,13 +15,17 @@ app.controller('midiController', ['$scope', '$http', '$timeout','averyService', 
 
 	AS.get_beers_on_tap().then(
 		function( data ){
-			beers_coll = AS.storage.beers_on_tap;
-			beers_coll.sort(function( a , b ){
-				return parseFloat(b.abv) - parseFloat(a.abv);
-			})
-			_.each(beers_coll, function( beer ){
+			var notes = [];
+			_.each(AS.storage.beers_on_tap, function( beer ){
 				beer.note = Math.floor(( beer.abv * 10) / 2);
 				if(beer.note > 100) beer.note = 100;
+				if(notes.indexOf(beer.note) == -1){
+					notes.push(beer.note);
+					beers_coll.push(beer);
+				}
+			})
+			beers_coll.sort(function( a , b ){
+				return parseFloat(b.abv) - parseFloat(a.abv);
 			})
 			$scope.beers = beers_coll;
 			$scope.beers_ready = true;
