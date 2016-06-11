@@ -6,13 +6,13 @@
 			<div class="row text-center">
 				<h5>Trivia Challenge</h5>
 			</div><!-- .row -->
-			<div class="row game-player pbottom-20">
-				<div class='red message' ng-hide='timer > 0'>
+			<div class="row game-player pbottom-20" >
+				<div class='red message' ng-hide='timer > 0 || game_over'>
 					<div class="row text-center ptop-20 pbottom-20">
 						<h3>Sorry, Your Time is Up.</h3>
 					</div>
 				</div><!-- .choose -->
-				<div class="timer"  ng-show = "timer > 0">
+				<div class="timer"  ng-show = "timer > 0 && !game_over" >
 					<div class="enter text-center">
 						<p class="pbottom-0">Enter for your chance to win</p>
 					</div><!-- .enter -->
@@ -23,15 +23,29 @@
 					</div><!-- .enter -->
 				</div><!-- .choose -->
 			</div><!-- .vp-50 -->
-			<div class="row border-t">
+
+			<div class = 'text-center' ng-show = 'challenge_won'>
+				<h1>Congratulations!</h1>
+				<h3 class = 'red'> Head on over to the bar for your free pint of {{challenge.current_challenge.beer.name}}!</h3>
+			</div>
+
+			<div class = 'text-center' ng-show = 'challenge_lost'>
+				<h2>Sorry Wrong Answer Maybe Next time!</h2>
+				<h3>The Correct answer to :</h3>
+				<h3><span class = 'red'>{{challenge.current_challenge.question}}</span></h3> 
+					<h3>is </h3>
+					<h3><span class = 'red'>{{challenge.current_challenge.answer.name}}</span></h3>
+			</div>
+
+			<div class="row border-t" ng-hide = 'game_over'>
 				<form class="row ptop-20" ng-submit = "submit_answer()">	
 					<div class="row" ng-hide = "timer < 1">
 						<div class="question-col">
 							<h4>Your Question</h4>
-							<h6>what dajfkhaldf you think wBOUT KDJHTthat sig ogsfiarsd? {{challenge.active_challenge.question}}</h6>
+							<h6>what dajfkhaldf you think wBOUT KDJHTthat sig ogsfiarsd? {{challenge.current_challenge.question}}</h6>
 						</div><!-- .col -->
 						<div class="img-col text-right">
-							<img ng-src = "{{challenge.active_challenge.beer.label_image.desktop}}" class="trivia-img" />
+							<img ng-src = "{{challenge.current_challenge.beer.label_image.desktop}}" class="trivia-img" />
 						</div><!-- .col -->
 					</div><!-- .row -->	
 					<div class="clearfix"></div>				
@@ -39,7 +53,7 @@
 						<div class = 'form-group'>
 							<h4>Your Answer</h4>
 							<div class="styled-select">
-								<select ng-model = 'answer' class = 'form-control'  ng-options = "beer as beer.name  for beer in challenge.active_challenge.beer_selection | orderBy:'name'" ></select>
+								<select ng-model = 'answer' class = 'form-control'  ng-options = "beer as beer.name  for beer in challenge.current_challenge.beer_selection | orderBy:'name'" ></select>
 							</div><!-- .styled-select -->	
 							<button type = 'submit' class = 'btn btn-danger' ><i class="icon-next"></i></button>
 						</div><!-- // form-group --> 
