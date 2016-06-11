@@ -1148,6 +1148,55 @@ ui-view {
     transform: scale(0) rotate(-360deg);
   }
 }
+/* != Trivia
+-------------------------------------------------------------- */
+#accept-challenge {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  background: rgba(227, 27, 35, 0.95);
+  padding-top: 100px;
+}
+.form-control {
+  border: 1px solid #ccc;
+  height: 50px;
+  padding: 8px 8px;
+  line-height: 32px;
+  font-size: 16px;
+  width: calc(100% - 52px);
+  display: block;
+  float: left;
+  box-shadow: none;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+}
+.form-control.full {
+  width: 100%;
+}
+.btn-success {
+  background: #fff;
+  border: 1px solid #fff;
+  padding: 8px 16px;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #000;
+  font-size: 14px;
+}
+.btn-danger {
+  background: #e31b23;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  padding: 8px 16px;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #000;
+  font-size: 14px;
+}
 /* != Midi
 -------------------------------------------------------------- */
 .play-btn {
@@ -1211,17 +1260,6 @@ button.btn-songs {
   font-size: 16px;
   width: calc(77% - 2px) !important;
   display: block;
-}
-.form-control {
-  border: 1px solid #ccc;
-  height: 50px;
-  padding: 8px 8px;
-  line-height: 32px;
-  font-size: 16px;
-  width: calc(100% - 52px);
-  display: block;
-  float: left;
-  box-shadow: none;
 }
 .midi-button {
   height: 50px;
@@ -1300,14 +1338,4 @@ button.btn-songs {
   color: #FFF;
   text-tranfrom: uppercase;
   z-index: 9999;
-}
-#accept-challenge {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 999999999999;
-  background: #e31b23;
-}
-#accept-challenge .form-control {
-  border: none;
 }
