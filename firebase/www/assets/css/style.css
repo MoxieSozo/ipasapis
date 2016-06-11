@@ -438,12 +438,14 @@ h5,
   font-family: 'EB Garamond', serif;
   font-size: 21px;
   margin-bottom: 0;
+  font-weight: normal;
 }
 h6,
 .h6 {
   font-family: 'EB Garamond', serif;
   font-size: 16px;
   margin-bottom: 0;
+  font-weight: normal;
 }
 h1,
 .h1,
@@ -556,7 +558,7 @@ p {
   width: 100%;
   height: 70px;
   background: #fff;
-  z-index: 999;
+  z-index: 9999;
 }
 .navbar-custom .header:after {
   content: '';
@@ -567,6 +569,9 @@ p {
   width: calc(100% - 30px);
   height: 1px;
   border-bottom: 1px solid #ccc;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 .navbar-custom .header .navbar-brand {
   width: 70px;
@@ -584,14 +589,13 @@ p {
   text-indent: -10000px;
 }
 .navbar-custom .header .toggler {
-  position: fixed;
+  position: absolute;
   top: 15px;
   left: 10px;
   height: 50px;
   width: 50px;
   text-align: center;
   line-height: 50px;
-  z-index: 9999;
 }
 .navbar-custom .header .toggler span {
   width: 26px;
@@ -606,6 +610,9 @@ p {
   left: 50%;
   margin-top: -1px;
   margin-left: -13px;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 .navbar-custom .header .toggler span.dash-1 {
   margin-top: -10px;
@@ -625,6 +632,41 @@ p {
 .navbar-custom .header i {
   font-size: 20px;
   color: #000;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.navbar-custom .header.open {
+  background: transparent;
+}
+.navbar-custom .header.open:after {
+  border-bottom: 1px solid transparent;
+}
+.navbar-custom .header.open .toggler span {
+  background: #fff;
+}
+.navbar-custom .header.open .toggler span.dash-1 {
+  -webkit-transform: rotate(-135deg);
+  -moz-transform: rotate(-135deg);
+  transform: rotate(-135deg);
+  margin-top: -1px;
+}
+.navbar-custom .header.open .toggler span.dash-2 {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  -webkit-opacity: 0;
+  -moz-opacity: 0;
+  opacity: 0;
+}
+.navbar-custom .header.open .toggler span.dash-3 {
+  -webkit-transform: rotate(135deg);
+  -moz-transform: rotate(135deg);
+  transform: rotate(135deg);
+  margin-top: -1px;
+}
+.navbar-custom .header.open i {
+  color: #fff;
 }
 .navbar-custom .menu {
   list-style: none;
@@ -705,6 +747,24 @@ ui-view {
 .sub-nav li i {
   color: #808080;
   font-size: 30px;
+}
+.row-game {
+  border-top: 1px solid #ccc;
+  margin-top: 20px;
+  padding: 20px 15px 0px 15px;
+  position: relative;
+}
+.row-game:first-of-type {
+  border-top: none;
+}
+.row-game i {
+  font-size: 60px;
+  color: #000;
+  margin-bottom: 15px;
+}
+.row-game h4 {
+  padding-top: 10px;
+  color: #e31b23;
 }
 .game-player {
   -webkit-transform-style: preserve-3d;
