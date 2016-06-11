@@ -14,6 +14,7 @@ app.run(['$rootScope', function( $rootScope ){
 }])
 // routes
 app.config(function($stateProvider, $urlRouterProvider) {
+/*
   $urlRouterProvider.otherwise("/");
   $stateProvider
     .state('app', {
@@ -61,6 +62,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
       controller : 'gamesController',
       templateUrl: "templates/all_games.html"
     })
+*/
    });
 app.constant('APIURL', 'http://apis.mondorobot.com/')
 app.run(function(){
@@ -69,16 +71,56 @@ app.run(function(){
 //---------------//
 // appController // 
 //---------------//
-app.controller('appController', ['$rootScope', '$scope', '$http', '$firebaseAuth' , '$firebaseArray', '$firebaseObject' , function( $rootScope, $scope, $http , $firebaseAuth, $firebaseArray, $firebaseObject ){
+app.controller('appController', ['$rootScope', '$scope', '$http', '$firebaseAuth' , '$firebaseArray', '$firebaseObject' , 'averyService', '$timeout', 
+	function( $rootScope, $scope, $http , $firebaseAuth, $firebaseArray, $firebaseObject , AS, $timeout){
 	
-	var $challengeRef = firebase.database().ref().child('challenge');
-	
-	var challengeSync = $firebaseObject($challengeRef);
+	  var cRef = firebase.database().ref().child("challenge");
+	  // download the data into a local object
+	  var cSync = $firebaseObject(cRef);
+	  // synchronize the object with a three-way data binding
+	  // click on `index.html` above to see it used in the DOM!
+	  cSync.$bindTo($scope, "challenge");
 
-	challengeSync.$loaded(function(){
-		alert(' new sync');
-	})
-	challengeSync.$bindTo($rootScope, 'challenge');
+
+		
+		$scope.add_challenge = function(){
+			$scope.challenge.current_challenge = $scope.new_challenge;
+			$scope.challenge_added = true;
+			$scope.new_challenge = {};
+			$timeout(function(){
+				$scope.new_challenge = false;
+			}, 2000)
+		}
+
+		$scope.end_challenge = function(){
+			$scope.challenge.current_challenge = false;
+		}
+
+		$scope.beers = [];
+		// else Get the beers to list
+		AS.get_beers_on_tap().then(
+			function( data ){
+				_.each(data, function(beer){
+					beer.type = 'On Tap';
+					$scope.beers.push(beer);
+				})
+				AS.get_beers_in_fridge().then(
+					function( data ){
+						$scope.beers_in_fridge = data;
+						_.each(data, function(beer){
+							beer.type = 'In Fridge';
+							$scope.beers.push(beer);
+						})
+					}, 
+					function( error ){
+					}
+				)
+			}, 
+			function( error ){
+			}
+		)
+
+
 
 
 

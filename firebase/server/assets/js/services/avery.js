@@ -29,6 +29,20 @@ app.service('averyService', ['$rootScope','$http', 'APIURL', '$q',  function($ro
 	}
 
 
+	var get_beers_in_fridge  =  function(){
+	  var deferred = $q.defer();
+		$http.get(APIURL  +  '/taproom/in-the-fridge')
+		.success(function( data ){
+			storage.beers_in_fridge = data.beer_list.beers;
+			deferred.resolve( storage.beers_in_fridge )
+		})
+		.error(function( e ){
+			deferred.reject( e );
+		})
+		return deferred.promise;
+	}
+
+
 	var get_beers_on_tap  =  function(){
 	  var deferred = $q.defer();
 		$http.get(APIURL  +  '/taproom/on-tap')
@@ -79,7 +93,8 @@ app.service('averyService', ['$rootScope','$http', 'APIURL', '$q',  function($ro
 		get_all_series 			: get_all_series,
 		get_beer_series 		: get_beer_series,
 		get_barrel_beers 		: get_barrel_beers,
-		get_beers_on_tap 		: get_beers_on_tap
+		get_beers_on_tap 		: get_beers_on_tap,
+		get_beers_in_fridge : get_beers_in_fridge
 	}
 
 }])
