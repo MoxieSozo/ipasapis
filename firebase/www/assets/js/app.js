@@ -36,6 +36,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
       controller : 'beersController',
       templateUrl: "templates/beers.html"
     })
+    .state('beers_on_tap', {
+      url: "/beers_on_tap",
+      controller : 'tapBeersController',
+      templateUrl: "templates/tapBeers.html"
+    })
     .state('seriesView', {
       url: "/series/:series_id",
       controller : 'seriesViewController',
