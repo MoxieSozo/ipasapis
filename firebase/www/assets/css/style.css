@@ -141,6 +141,9 @@
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 html,
 body {
@@ -157,4 +160,50 @@ body {
   -webkit-transform: translateY(-50%);
   -moz-transform: translateY(-50%);
   transform: translateY(-50%);
+}
+.container {
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+[class^="vr-"],
+[class*=" vr-"] {
+  width: 100%;
+  height: 100vh;
+}
+.vr-100 {
+  height: 100vh;
+}
+.vr-90 {
+  height: 90vh;
+}
+.vr-80 {
+  height: 80vh;
+}
+.vr-70 {
+  height: 70vh;
+}
+.vr-60 {
+  height: 60vh;
+}
+.vr-50 {
+  height: 50vh;
+}
+.vr-40 {
+  height: 40vh;
+}
+.vr-30 {
+  height: 30vh;
+}
+.vr-20 {
+  height: 20vh;
+}
+.vr-10 {
+  height: 10vh;
+}
+.col {
+  width: 50%;
+}
+ui-view {
+  height: 100%;
 }
