@@ -103,6 +103,13 @@ app.controller('appController', ['$rootScope', '$scope', '$http', '$firebaseAuth
 				$scope.new_challenge = false;
 			}, 2000)
 		}
+		
+		$scope.remove_phone_number = function( $phone_number ){
+			alert($phone_number)
+			_.remove($scope.challenge.phone_numbers, function($phone){
+				return $phone == $phone_number
+			});
+		}
 
 		$scope.beers = [];
 		// else Get the beers to list

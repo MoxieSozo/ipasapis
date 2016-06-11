@@ -341,7 +341,7 @@
 		"fileType": 32768,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"initialSize": 21495,
+		"initialSize": 8527,
 		"inputAbbreviatedPath": "\/img\/avery-logo.png",
 		"outputAbbreviatedPath": "\/img\/avery-logo.png",
 		"outputPathIsOutsideProject": 0,
@@ -692,7 +692,7 @@
 	},
 "hooks": [
 	],
-"lastSavedByUser": "Joey Vestal",
+"lastSavedByUser": "Sean Bradley",
 "manualImportLinks": {
 	},
 "projectAttributes": {

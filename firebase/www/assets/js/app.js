@@ -1,17 +1,5 @@
-
 var app = angular.module('apipaApp', [ 'ui.router', 'firebase']);
 
-app.run(['$rootScope', function( $rootScope ){
-  var config = {
-    apiKey: "AIzaSyAWMNtJ6BVc7XR1BRWUMzU4yPVCittoyqE",
-    authDomain: "project-2372542451830160777.firebaseapp.com",
-    databaseURL: "https://project-2372542451830160777.firebaseio.com",
-    storageBucket: "project-2372542451830160777.appspot.com",
-  };
-  console.log(config);
-  firebase.initializeApp(config);
-
-}])
 // routes
 app.config(function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise("/");
@@ -53,6 +41,17 @@ app.config(function($stateProvider, $urlRouterProvider) {
     })
     .state('triviaChallenge', {
       url: "/trivia-challenge",
+/*
+      resolve: {
+         security: ['$q', function($q ){
+					var date  = new Date();
+					date = date.getDay() + '-' + date.getMonth() + '-' + date.getYear();
+					if( date   ==   window.localStorage.took_challenge ){
+						window.location.href = '/';
+					}
+         }]
+      },
+*/
       controller : 'triviaChallengeController',
       templateUrl: "templates/trivia-challenge.html"
     })
@@ -68,45 +67,80 @@ app.config(function($stateProvider, $urlRouterProvider) {
     })
    });
 app.constant('APIURL', 'http://apis.mondorobot.com/')
-app.run(function(){
-});
+
+app.run(['$rootScope', function( $rootScope ){
+  var config = {
+    apiKey: "AIzaSyAWMNtJ6BVc7XR1BRWUMzU4yPVCittoyqE",
+    authDomain: "project-2372542451830160777.firebaseapp.com",
+    databaseURL: "https://project-2372542451830160777.firebaseio.com",
+    storageBucket: "project-2372542451830160777.appspot.com",
+  };
+  console.log(config);
+  firebase.initializeApp(config);
+
+}])
+
 
 //---------------//
 // appController // 
 //---------------//
 app.controller('appController', ['$rootScope', '$scope', '$http', '$firebaseAuth' , '$firebaseArray', '$firebaseObject' , '$state', 
 	function( $rootScope, $scope, $http , $firebaseAuth, $firebaseArray, $firebaseObject , $state){
+	var date = new Date();
+	$scope.date = date.getDay() + '-' + date.getMonth() + '-' + date.getYear();
 	
-	var $challengeRef = firebase.database().ref().child('challenge');
-	
-	var challengeSync = $firebaseObject($challengeRef);
+	$scope.took_challenge = window.localStorage.took_challenge == $scope.date;
 
-	$scope.$watch('challenge', function(a, b){
-		if(typeof(a)  != 'undefined' 
-			&& typeof(a.current_challenge) != 'undefined' 
-			&& a.current_challenge
-			&& !a.active_challenge){
-			if(confirm('Accept Challenge')){
-				$scope.accept_challenge()
+
+
+		var $challengeRef = firebase.database().ref().child('challenge');
+		
+		var challengeSync = $firebaseObject($challengeRef);
+	
+		challengeSync.$bindTo($scope, 'challenge');
+		
+		challengeSync.$loaded(function(){
+			window.localStorage.phone_number = 12345;
+			
+			// watch for changes to the challenge/
+			// if something comes in. let the user know
+			if(!$scope.taking_challenge){
+				$scope.$watch('challenge', function(a, b){
+					if(	typeof(a)  != 'undefined' 
+						&& typeof(a.current_challenge) != 'undefined' 
+						&& a.current_challenge.active != false ){
+							$('#accept-challenge').before('ui-view');
+							$scope.show_challenge_modal = true;
+					}
+				}, true);
 			}
-		}
-	}, true);
+		})
 	
 	
-	
+	// user is accepting the challenge. 
 	$scope.accept_challenge = function(){
-		$scope.challenge.active_challenge = angular.copy($scope.challenge.current_challenge);
-		$scope.challenge.current_challenge.active = true; 
-		$state.go('triviaChallenge')
+		
+		if(typeof($scope.challenge.phone_numbers)== 'undefined') $scope.challenge.phone_numbers = []
+		if($scope.challenge.phone_numbers.indexOf($scope.accept_with_phone) !== -1){
+			alert('It looks like you already played today. Try back again tomorrow');
+			window.localStorage.taking_challenge =  $scope.taking_challenge = $scope.date;
+			window.localStorage.took_challenge =  $scope.took_challenge = $scope.date;
+			$scope.show_challenge_modal = false;
+		}else{
+
+			$scope.challenge.phone_numbers.push($scope.accept_with_phone);
+			$scope.challenge.active_challenge = angular.copy($scope.challenge.current_challenge);
+			$scope.challenge.current_challenge.active = true; 
+			window.localStorage.phone_number =  $scope.accept_with_phone;
+			$scope.show_challenge_modal = false;
+			console.log($scope);
+			//$state.go('triviaChallenge');
+
+		}
 	}
 
 	
 
-	
-	challengeSync.$loaded(function(){
-// 		alert(' new sync');
-	})
-	challengeSync.$bindTo($scope, 'challenge');
 
 
 
