@@ -1,38 +1,14 @@
 app.controller('tapperController', ['$scope', '$http', 'averyService', function( $scope, $http, averyService ){
 	
-	averyService.get_all_beers().then( function(beers){
-		console.log(beers)
-	});
+	$scope.recipe = [];
 	
 	
-	var game = new Phaser.Game(800, 600, Phaser.AUTO, 'game', { preload: preload, create: create, update: update });
-		
-		
-		
-	function preload() {
-	
-		game.load.image('sky', 'assets/images/sky.png');
-		game.load.image('ground', 'assets/images/platform.png');
-		game.load.image('hop', 'assets/images/hop.svg');
-		// what else to add
-		game.load.spritesheet('dude', 'assets/images/dude.png', 32, 48);
-		
-		game.load.spritesheet('buttonright', 'assets/images/button.svg',120,120);
-		game.load.spritesheet('buttonleft', 'assets/images/button.svg',120,120);
-		game.load.spritesheet('buttondiagonal', 'assets/images/button.svg',120,120);
-		game.load.spritesheet('buttonfire', 'assets/images/button.svg',120,120);
-		game.load.spritesheet('buttonjump', 'assets/images/button.svg');
-		
-		//full screen
-		game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-		game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
-	
-	}
-	
+	var game;
 	var player;
 	var platforms;
+	var clouds;
 	var cursors;
-	
+	var beers;
 	var hops;
 	var left = false;
 	var right = false;
@@ -42,8 +18,68 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 	var hopTotal = 0; // score
 	var hopText; // scoreText
 	
+	
+	averyService.get_all_beers().then( function(b){
+		beers = b;
+		play_tapper();
+	});
+	
+	
+	
+
+	
+	
+	function play_tapper() {
+		game = new Phaser.Game(1200, 680, Phaser.AUTO, 'game', { preload: preload, create: create, update: update });
+		console.log(beers);
+	}
+	
+	
+	
+		
+		
+		
+	/**
+	 * preload function.
+	 * 
+	 * @access public
+	 * @return void
+	 */
+	function preload() {
+	
+		game.load.image('sky', 		'assets/img/tapper/sky.png');
+		game.load.image('ground', 	'assets/img/tapper/platform.png');
+		game.load.image('clouds', 	'assets/img/tapper/clouds.png');
+		game.load.image('city', 	'assets/img/tapper/city.png');
+		game.load.image('tree', 	'assets/img/tapper/tree.png');
+		game.load.image('hop', 		'assets/img/tapper/hop.svg');
+		
+		
+		// what else to add
+		game.load.spritesheet('dude', 'assets/img/tapper/drinker.png', 32, 48);
+		
+		game.load.spritesheet('buttonright', 'assets/img/tapper/ui-right.png',150,150);
+		game.load.spritesheet('buttonleft', 'assets/img/tapper/ui-left.png',150,150);
+		//game.load.spritesheet('buttondiagonal', 'assets/img/tapper/button.svg',120,120);
+		//game.load.spritesheet('buttonfire', 'assets/img/tapper/button.svg',120,120);
+		game.load.spritesheet('buttonjump', 'assets/img/tapper/ui-jump.png', 150,150);
+		
+		//full screen
+		game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+		game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
+	
+	}
+	
+	
+	
+	/**
+	 * create function.
+	 * 
+	 * @access public
+	 * @return void
+	 */
 	function create() {
-		if (!game.device.desktop){ game.input.onDown.add(gofull, this); } //go fullscreen on mobile devices
+		//if (!game.device.desktop){ game.input.onDown.add(gofull, this); } //go fullscreen on mobile devices
 		
 		
 		//	We're going to be using physics, so enable the Arcade Physics system
@@ -51,19 +87,32 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 		game.physics.arcade.y = 900;
 	
 		//	A simple background for our game
-		game.add.sprite(0, 0, 'sky');
-	
+		var sky = game.add.sprite(0,0, 'sky');
+		sky.scale.x = 2;
+		sky.scale.x = 1.5;
+		console.log( sky );
+		
+		
 		//	The platforms group contains the ground and the 2 ledges we can jump on
 		platforms = game.add.group();
-	
-		//	We will enable physics for any object that is created in this group
 		platforms.enableBody = true;
-	
+		
+		clouds = game.add.group();
+		clouds.enableBody = false;
+		var cloud1 = clouds.create(900, 120, 'clouds');
+		
+		var cloud_inMotion = game.add.tween(cloud1);
+		cloud_inMotion.to({ x: -200 }, 30000, 'Linear', true, 0);
+		
+		
+		
+		// params are: properties to tween, time in ms, easing and auto-start tweenthis.game.add.tween(sprite).to({x: 100, y: 200}, 1000, Phaser.Easing.Quadratic.InOut, true);
+		
 		// Here we create the ground.
-		var ground = platforms.create(0, game.world.height - 64, 'ground');
+		var ground = platforms.create(0, game.world.height - 150, 'ground');
 	
 		//	Scale it to fit the width of the game (the original sprite is 400x32 in size)
-		ground.scale.setTo(2, 2);
+		ground.scale.setTo(6, 5);
 	
 		//	This stops it from falling away when you jump on it
 		ground.body.immovable = true;
@@ -76,7 +125,7 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 		ledge.body.immovable = true;
 	
 		// The player and its settings
-		player = game.add.sprite(32, game.world.height - 150, 'dude');
+		player = game.add.sprite(48, game.world.height - 200, 'dude');
 	
 		//	We need to enable physics on the player
 		game.physics.arcade.enable(player);
@@ -85,7 +134,9 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 		player.body.bounce.y = 0.2;
 		player.body.gravity.y = 400;
 		player.body.collideWorldBounds = true;
-	
+		
+		
+		
 		//	Our two animations, walking left and right.
 		player.animations.add('left', [0, 1, 2, 3], 10, true);
 		player.animations.add('right', [5, 6, 7, 8], 10, true);
@@ -111,7 +162,7 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 	
 		//	The score
 		hopText = game.add.text(16, 16, 'Hops Collected: 0', { fontSize: '32px', fill: '#FFF' });
-	
+		
 		//	Our controls
 		// Desktop / keyboard
 		cursors = game.input.keyboard.createCursorKeys();
@@ -162,9 +213,9 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 			player.body.velocity.y = -350;
 		}
 		
-		if (jump){ jump_now(); } 
+		if (jump){ jump_now(); }
 		
-		
+		 if (game.input.currentPointers == 0 && !game.input.activePointer.isMouse){ jump=false; left=false; right=false; } //this works around a "bug" where a button gets stuck in pressed state
 	
 	}
 	
@@ -176,6 +227,7 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 		//	Add and update the score
 		hopTotal += 1;
 		hopText.text = 'Hops Collected: ' + hopTotal;
+		$scope.recipe.hops  = hopTotal;
 	
 	}
 	
@@ -185,16 +237,16 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 		
 		
 		if (game.time.now > nextJump ){
-			player.body.velocity.y = -350;
-			nextJump = game.time.now + 300;
+			player.body.velocity.y = -300;
+			nextJump = game.time.now + 2000;
 		}
 	}
 	
 	function build_buttons() {
 		var buttonPos = {
-			jump: [600,550],
-			left: [100,550],
-			right: [150,550]
+			jump: [900,600],
+			left: [75,600],
+			right: [150,600]
 		};
 		
 		// jump
@@ -204,6 +256,9 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 		buttonjump.events.onInputOut.add(function(){jump=false;});
 		buttonjump.events.onInputDown.add(function(){jump=true;});
 		buttonjump.events.onInputUp.add(function(){jump=false;});
+		buttonjump.scale.x = 0.25;
+		buttonjump.scale.y = 0.25;	
+		
 		
 		//left
 		buttonleft = game.add.button(buttonPos.left[0], buttonPos.left[1], 'buttonleft', null, this, 0, 1, 0, 1);  //game, x, y, key, callback, callbackContext, overFrame, outFrame, downFrame, upFrame
@@ -212,6 +267,8 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 		buttonleft.events.onInputOut.add(function(){left=false;});
 		buttonleft.events.onInputDown.add(function(){left=true;});
 		buttonleft.events.onInputUp.add(function(){left=false;});
+		buttonleft.scale.x = 0.25;
+		buttonleft.scale.y = 0.25;
 		
 		//right
 		buttonright = game.add.button(buttonPos.right[0], buttonPos.right[1], 'buttonright', null, this, 0, 1, 0, 1);  //game, x, y, key, callback, callbackContext, overFrame, outFrame, downFrame, upFrame
@@ -220,6 +277,8 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 		buttonright.events.onInputOut.add(function(){right=false;});
 		buttonright.events.onInputDown.add(function(){right=true;});
 		buttonright.events.onInputUp.add(function(){right=false;});
+		buttonright.scale.x = 0.25;
+		buttonright.scale.y = 0.25;
 
 	} 
 
