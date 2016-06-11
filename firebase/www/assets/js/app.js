@@ -51,6 +51,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
       controller : 'tapperController',
       templateUrl: "templates/tapper.html"
     })
+     .state('all_games', {
+      url: "/all_games",
+      controller : 'gamesController',
+      templateUrl: "templates/all_games.html"
+    })
    });
 app.constant('APIURL', 'http://apis.mondorobot.com/')
 app.run(function(){
@@ -75,6 +80,12 @@ app.controller('appController', ['$scope', '$http', '$firebaseAuth' , function( 
     console.log("Authentication failed:", error);
   });
 */
+	$('.toggler').on('click', function(){
+		$('.menu').removeClass('out');
+	});
+	$('.closer, .menu a').on('click', function(){
+		$('.menu').addClass('out');
+	});
 
 }]);
 
