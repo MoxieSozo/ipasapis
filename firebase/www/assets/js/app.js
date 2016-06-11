@@ -70,6 +70,12 @@ app.controller('appController', ['$scope', '$http', '$firebaseAuth' , function( 
     console.log("Authentication failed:", error);
   });
 */
+	$('.toggler').on('click', function(){
+		$('.menu').removeClass('out');
+	});
+	$('.closer').on('click', function(){
+		$('.menu').addClass('out');
+	});
 
 }]);
 

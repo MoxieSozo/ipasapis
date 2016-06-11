@@ -3,6 +3,13 @@
 
 @mont: 'Montserrat', sans-serif;
 @garamond: 'EB Garamond', serif;
+@black: #000;
+@white: #fff;
+@gray-dark: #333;
+@gray: #808080;
+@gray-light: #ccc;
+@red: #e31b23;
+
 
 /* != MIXINS
 -------------------------------------------------------------- */
@@ -83,18 +90,38 @@
 .pbottom-90  { padding-bottom: 90px; }
 .pbottom-100 { padding-bottom: 100px; }
 
+.border-b{
+	border-bottom:1px solid @gray-light;	
+}
+.border-t{
+	border-top:1px solid @gray-light;	
+}
+.border-r{
+	border-right:1px solid @gray-light;	
+}
+.border-l{
+	border-left:1px solid @gray-light;	
+}
 *{
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-box-sizing:border-box;
 	-moz-box-sizing:border-box;
 	box-sizing:border-box;
+	font-family:@garamond;
 }
+
 
 html, body{
 	height:100%;
 }
 
+a{
+	text-decoration:none !important;
+	&:hover{
+		text-decoration:none !important;
+	}
+}
 
 .vert-center{
   	.transform-style(preserve-3d);

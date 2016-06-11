@@ -1,0 +1,82 @@
+.navbar-custom{
+	.header{
+		position:fixed;
+		top:0;
+		left:0;
+		width:100%;
+		.navbar-brand{
+			
+		}
+		.toggler{
+			position:absolute;
+			top:10px;
+			left:10px;
+			height:50px;
+			width:50px;
+			text-align:center;
+			line-height:50px;
+		}
+		.share{
+			position:absolute;
+			top:10px;
+			right:10px;
+			width:50px;
+			height:50px;
+			text-align:center;
+			line-height:50px;
+		}
+		i{
+			font-size:20px;
+			color:@black;
+		}
+	}
+	.menu{
+		list-style:none;
+		padding: 0 50px 50px 50px;
+		margin:0;
+		position:fixed;
+		top:0;
+		left:0;
+		height:100%;
+		width:100%;
+		display:block;
+		z-index:999;
+		background:fade(@gray-dark, 95%);
+		.transition(all .3s ease);
+		.menu-head{
+			.close{
+				.closer{
+					position:absolute;
+					top:10px;
+					left:10px;
+					height:50px;
+					width:50px;
+					text-align:center;
+					line-height:50px;
+					font-size:20px;
+					color:@white;
+				}
+			}
+		}
+		.item{
+			.transform-style(preserve-3d);
+			div{
+				position: relative;
+				top: 50%;
+				.transform(translateY(-50%));
+				display:block;
+				width:100%;
+				text-align:center;
+				a{
+					color:@white;
+					font-size:28px;
+					text-align:center;
+					text-transform:uppercase;
+				}
+			}
+		}
+		&.out{
+			.transform(translateX(-100%));
+		}
+	}
+}
