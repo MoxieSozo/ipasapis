@@ -106,7 +106,12 @@ app.controller('appController', ['$rootScope', '$scope', '$http', '$firebaseAuth
 								&& $scope.challenge.current_challenge.phone_number !== localPhone )){
 								return 
 							}
-							$('[ui-view]').before('#accept-challenge').css('opacity', 1).fadeIn();
+							$('[ui-view]').before('#accept-challenge').css({
+									'opacity': '1', 
+									'-webkit-transform': 'translateX(0)', 
+									'-moz-transform': 'translateX(0)', 
+									'transform': 'translateX(0)'
+								}).fadeIn();
 							$scope.show_challenge_modal = true;
 					}
 				}, true);

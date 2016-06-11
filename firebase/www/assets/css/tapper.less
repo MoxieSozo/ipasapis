@@ -11,6 +11,54 @@
 	}
 }
 
+#tapper {
+	.hud {
+		display: block;
+		position: fixed;
+		z-index: 99999;
+		width: 50%;
+		margin: 0 25%;
+		left:0;
+		right:0;
+		bottom: 10px;
+		
+		
+		> div  {
+			float: left;
+			width: 30%;
+			margin: 5px;
+			color: #999;
+			text-align: center;
+			pointer-events: none;
+			&.active {
+				color: #DDD;
+			}
+			
+			i {
+				display: inline-block;
+				font-size: 24px;
+			}
+			span {
+				display: inline-block;
+				font-weight: bold; 
+			
+			}
+		}
+	}
+}
+
+.hud{
+	button,
+	.reset{
+		font-family:@mont;
+		text-transform:uppercase;
+		padding:8px 16px;
+		border:1px solid @white;
+		color:@white;
+		font-weight:700;
+	}
+}
+
 #view-toggle {
 	position: fixed;
 	top:0;
