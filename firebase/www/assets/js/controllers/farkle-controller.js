@@ -9,7 +9,7 @@ app.controller('farkleController', ['$scope', '$http','$interval', '$timeout',  
 	$scope.score = {
 		wins  	: 0,
 		losses 	: 0,
-		ties		: 0
+		ties	: 0
 	}
 	
 	
@@ -29,7 +29,7 @@ app.controller('farkleController', ['$scope', '$http','$interval', '$timeout',  
 		$('.rochambeer-controls i').removeClass('active');
 
 		$scope.made_choice = false;
-		$scope.message = '';
+		$scope.message = false;
 		$scope.game_over = false;
 		$scope.countdown = 5;
 		$scope.counting_down = true;
