@@ -233,6 +233,7 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 			
 			//	Let gravity do its thing
 			hop.body.gravity.y = 900;
+			hop.scale.setTo(.5, .5);
 	
 			//	This just gives each hop a slightly random bounce value
 			hop.body.bounce.y = 0.1 + Math.random() * 0.2;

@@ -1399,6 +1399,7 @@ button.btn-songs {
   padding: 8px 16px;
   border: 1px solid #fff;
   color: #fff;
+  font-weight: 700;
 }
 #view-toggle {
   position: fixed;
