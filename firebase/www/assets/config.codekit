@@ -535,6 +535,28 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/img\/tapper\/videogame-retina.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 16157,
+		"inputAbbreviatedPath": "\/img\/tapper\/videogame-retina.jpg",
+		"outputAbbreviatedPath": "\/img\/tapper\/videogame-retina.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/img\/tapper\/videogame.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 6526,
+		"inputAbbreviatedPath": "\/img\/tapper\/videogame.jpg",
+		"outputAbbreviatedPath": "\/img\/tapper\/videogame.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/js\/app.js": {
 		"fileType": 64,
 		"ignore": 1,
