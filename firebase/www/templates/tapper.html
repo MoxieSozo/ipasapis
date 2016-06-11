@@ -2,12 +2,24 @@
 	<div class = 'row'>
 		<div class ='col-xs-12'>
 			<h1>Tapper</h1>
+			<a href="#" class="btn btn-sm btn-primary" id="view-toggle">Back to Games</a>
 			<ui-view></ui-view>
 			<div id="game" class='tapper'></div>
+			<div class="hud" >
+				<div class="hops">
+					<span>{{ recipe.hops }}</span>
+				</div>
+				<div class="grain">
+					<span>{{ recipe.grain }}</span>
+				</div>
+				<div class="yeast">
+					<span>{{ recipe.yeast }}</span>
+				</div>
+				<div class="ready">
+					<span>{{ recipe.yeast }}</span>
+				</div>
+			</div>
 			
-			<pre>
-				{{ recipe | json }}
-			</pre>
 		</div><!-- // col-xs-12 --> 
 	</div><!-- // row --> 
 </div><!-- // container --> 
