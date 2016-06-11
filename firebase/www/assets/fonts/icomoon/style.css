@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'icomoon';
-    src:    url('fonts/icomoon.eot?r21h3x');
-    src:    url('fonts/icomoon.eot?r21h3x#iefix') format('embedded-opentype'),
-        url('fonts/icomoon.ttf?r21h3x') format('truetype'),
-        url('fonts/icomoon.woff?r21h3x') format('woff'),
-        url('fonts/icomoon.svg?r21h3x#icomoon') format('svg');
+    src:    url('fonts/icomoon.eot?pnyla4');
+    src:    url('fonts/icomoon.eot?pnyla4#iefix') format('embedded-opentype'),
+        url('fonts/icomoon.ttf?pnyla4') format('truetype'),
+        url('fonts/icomoon.woff?pnyla4') format('woff'),
+        url('fonts/icomoon.svg?pnyla4#icomoon') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -24,6 +24,18 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-play:before {
+    content: "\e92d";
+}
+.icon-record:before {
+    content: "\e92e";
+}
+.icon-save:before {
+    content: "\e92f";
+}
+.icon-stop:before {
+    content: "\e930";
+}
 .icon-barley:before {
     content: "\e90f";
 }
@@ -88,6 +100,12 @@
     content: "\68";
 }
 .icon-mouth:before {
+    content: "\e911";
+}
+.icon-midi:before {
+    content: "\e911";
+}
+.icon-Midi:before {
     content: "\e911";
 }
 .icon-check:before {

@@ -36,6 +36,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
       controller : 'beersController',
       templateUrl: "templates/beers.html"
     })
+    .state('beers-on-tap', {
+      url: "/beers-on-tap",
+      controller : 'tapBeersController',
+      templateUrl: "templates/beers-on-tap.html"
+    })
     .state('seriesView', {
       url: "/series/:series_id",
       controller : 'seriesViewController',
@@ -45,6 +50,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
       url: "/midi",
       controller : 'midiController',
       templateUrl: "templates/midi.html"
+    })
+    .state('triviaChallenge', {
+      url: "/trivia-challenge",
+      controller : 'triviaChallengeController',
+      templateUrl: "templates/trivia-challenge.html"
     })
      .state('games.tapper', {
       url: "/tapper",
@@ -64,7 +74,39 @@ app.run(function(){
 //---------------//
 // appController // 
 //---------------//
-app.controller('appController', ['$scope', '$http', '$firebaseAuth' , function( $scope, $http , $firebaseAuth){
+app.controller('appController', ['$rootScope', '$scope', '$http', '$firebaseAuth' , '$firebaseArray', '$firebaseObject' , '$state', 
+	function( $rootScope, $scope, $http , $firebaseAuth, $firebaseArray, $firebaseObject , $state){
+	
+	var $challengeRef = firebase.database().ref().child('challenge');
+	
+	var challengeSync = $firebaseObject($challengeRef);
+
+	$scope.$watch('challenge', function(a, b){
+		if(typeof(a)  != 'undefined' && typeof(a.current_challenge) != 'undefined' && a.current_challenge){
+			if(confirm('Accept Challenge')){
+				$scope.accept_challenge()
+			}
+		}
+	}, true);
+	
+	
+	
+	$scope.accept_challenge = function(){
+		var c = $scope.current_challenge;
+		$scope.current_challenge = false; 
+		$scope.active_challenge = c;
+		$state.go('triviaChallenge')
+	}
+
+	
+
+	
+	challengeSync.$loaded(function(){
+// 		alert(' new sync');
+	})
+	challengeSync.$bindTo($scope, 'challenge');
+
+
 
 /*
 
@@ -81,9 +123,11 @@ app.controller('appController', ['$scope', '$http', '$firebaseAuth' , function( 
   });
 */
 	$('.toggler').on('click', function(){
-		$('.menu').removeClass('out');
+		$('.header').toggleClass('open');
+		$('.menu').toggleClass('out');
 	});
-	$('.closer, .menu a').on('click', function(){
+	$('.navbar-brand, .menu a').on('click', function(){
+		$('.header').removeClass('open');
 		$('.menu').addClass('out');
 	});
 

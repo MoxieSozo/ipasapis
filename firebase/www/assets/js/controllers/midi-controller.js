@@ -10,29 +10,21 @@ app.controller('midiController', ['$scope', '$http', '$timeout','averyService', 
 	$scope.timeout = 0;
 	$scope.showing_songs = false;
 	$scope.can_save = false;
+	$scope.playing = false;
 	
 
-	AS.get_all_beers().then(
+	AS.get_beers_on_tap().then(
 		function( data ){
-			beers_coll = AS.storage.all_beers;
-			AS.get_barrel_beers().then(
-				function( data ){
-					_.each( AS.storage.barrel_beers , function( beer ){
-							beers_coll.push( beer );
-					})
-					beers_coll.sort(function( a , b ){
-						return parseFloat(b.abv) - parseFloat(a.abv);
-					})
-					_.each(beers_coll, function( beer ){
-						beer.note = Math.floor(( beer.abv * 10) / 2);
-						if(beer.note > 100) beer.note = 100;
-					})
-					$scope.beers = beers_coll;
-					$scope.beers_ready = true;
-				},
-				function( error ){
-				}
-			)
+			beers_coll = AS.storage.beers_on_tap;
+			beers_coll.sort(function( a , b ){
+				return parseFloat(b.abv) - parseFloat(a.abv);
+			})
+			_.each(beers_coll, function( beer ){
+				beer.note = Math.floor(( beer.abv * 10) / 2);
+				if(beer.note > 100) beer.note = 100;
+			})
+			$scope.beers = beers_coll;
+			$scope.beers_ready = true;
 		},
 		function( error ){
 		}
@@ -57,15 +49,17 @@ app.controller('midiController', ['$scope', '$http', '$timeout','averyService', 
 	}
 
 	$scope.playback = function( song ){
-		$scope.playing = true;
-		_.each(song.notes, function( note ){
-			if($scope.playing){
-				$scope.playing = $timeout(function(){
-					console.log( note )
-					$scope.play_note( note.note )
-				}, note.timeout)
-			}
-		})
+		if(!$scope.playing){
+			$scope.playing = true;
+			_.each(song.notes, function( note ){
+				if($scope.playing){
+					$scope.playing = $timeout(function(){
+						console.log( note )
+						$scope.play_note( note.note )
+					}, note.timeout)
+				}
+			})
+		}
 	}
 	
 	$scope.stopPlayback = function(){
@@ -74,6 +68,8 @@ app.controller('midiController', ['$scope', '$http', '$timeout','averyService', 
 	
 	$scope.save_song = function(){
 		$scope.songs.push($scope.current_song);
+		$scope.current_song ={};
+		$scope.can_save = false;
 	}
 	
 	$scope.show_songs = function(){
@@ -86,7 +82,6 @@ app.controller('midiController', ['$scope', '$http', '$timeout','averyService', 
 		// load the plugin 
 		MIDI.loadPlugin({
 			soundfontUrl: "assets/soundfont/",
-			instrument: "acoustic_grand_piano",
 			onprogress: function(state, progress) {
 				//console.log(state, progress);
 			},
@@ -97,13 +92,14 @@ app.controller('midiController', ['$scope', '$http', '$timeout','averyService', 
 		});
 		
 	})
-	
+			
 	
 		$scope.replay_note = function( note ){
 			
 		}
 
 		$scope.play_note = function( note ){
+
 			var delay = 0; // play one note every quarter second
 			var note = note; // the MIDI note
 			var velocity = 200; // how hard the note hits
@@ -128,6 +124,8 @@ app.controller('midiController', ['$scope', '$http', '$timeout','averyService', 
 
 	
 }])
+
+
 
 
 app.filter('floatToColor', [function(){

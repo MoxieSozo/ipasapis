@@ -1,115 +1,53 @@
-<style>
-	.midi-button{
-		height: 50px;
-/*
-		width:50%;
-		float:left;
-*/
-/* 		text-align: center; */
-		border:1px solid #333;
-		overflow: hidden;
-		clear:both;
-	}
-	.midi-button .title{
-		float:left;
-		width:50%;
-		padding-left:10px;
-	}
-	.midi-button .controls{
-		width:30%;
-		float:right;
-		height: 50px;
-	}
-	.play-btn{
-		cursor:pointer;
-		display:block;
-		background:black;
-		color:white;
-		text-align: center;
-		height:50px;
-		padding-top:20%;
-	}
-	.play-btn:hover{
-		color:black;
-		background:white;
-	}
-	.clearfix{
-		display: block;
-		clear:both;
-	}
-	.beer-image{
-		float:left;
-		height:40px;
-		width:40px;
-		margin-left:10px;
-		background-size: cover;
-		background-repeat: no-repeat;
-		border-radius: 50px;
-	}
-	</style>
+<div class="container">
+	<div class="row intro">
+		<div class="col text-left">
+			<h4 class="ptop-15">Record your Beer Midi</h4>
+		</div><!-- .col -->
+		<div class="col three-button ptop-10 text-right" ng-show = "sound_ready && beers_ready">
+			<button type = 'button' ng-click = "show_songs()" class = 'btn-songs' ng-if = "songs.length > 0" ><i class="icon-check"></i></button>
+			<button type = 'button' ng-click = 'start_recording()' class = 'btn-start' ng-show = "!recording"><i class="icon-record"></i></button>
+			<button type = 'button' ng-click = 'stop_recording()' class = 'btn-stop' ng-show = 'recording'><i class="icon-stop"></i></button>
+			<button type = 'button' ng-click = 'playback(current_song)' ng-show = "!playing && can_save "><i class="icon-play"></i></button>
+			<button type = 'button' ng-click = 'stopPlayback(current_song)' ng-show = "playing && can_save"><i class="icon-stop"></i></button>
+		</div><!-- .col -->
+	</div><!-- .row -->
+	<div class="row  text-right ptop-15" ng-show = "!sound_ready">
+		<p>Loading...</p>
+	</div><!-- .row -->
 
-<div class ='container'>
+	<div class="clearfix"></div>
 	
-	<section>
-		<div class=  'row'>
-			<div class = 'col-xs-12 text-center'>
-				<h1>Beer Midi</h1>
-			</div>
-		</div>
-		<div class = 'row' ng-show = "!sound_ready">
-			<div class = 'col-xs-12'>
-				Loading...
-			</div>
-		</div>
-	</section>
-
-	<section>
-		<div class = 'row'>
-			<div class = 'col-xs-12' ng-show = "sound_ready && beers_ready">
-				<button type = 'button' ng-click = 'start_recording()' class = 'btn-start' ng-show = "!recording">Start Recording</button>
-				<button type = 'button' ng-click = 'stop_recording()' class = 'btn-stop' ng-show = 'recording'>Stop Recording</button>
-				<button type = 'button' ng-click = "show_songs()" class = 'btn-stop' ng-if = "songs.length > 0" >My Songs</button>
-			</div>
-		</div>
-	</section>
-
-	<section ng-if = "can_save">
-		<input type = 'input' ng-model = 'current_song.title' />
-		<button type = 'button' ng-click = 'save_song(current_song)' ng-show = "can_save">Save in My Songs</button>
-		<button type = 'button' ng-click = 'playback(current_song)' ng-show = "!playing">Play</button>
-		<button type = 'button' ng-click = 'stopPlayback(current_song)' ng-show = "playing">Stop</button>
-	</section>
-
-	<section ng-if = 'showing_songs'>
-		<div class = 'row' ng-repeat = 'song in songs'>
-			<div class = 'col-xs-12'>
-				{{song.title}}
-				<button type = 'button' ng-click = 'playback(song)'>Play</button>
-			</div>
-		</div>
-	</section>
-
-
-	<section>
-		<div class = 'row'>
-			<div class = 'col-xs-12'>
-				<div ng-repeat = 'beer in beers' class = 'midi-button'>
-					<div class = 'beer-image' style = "background-image:url({{beer.label_image.desktop}})">
-					</div>
-					<div class = 'title'>
-						<b>{{beer.name}}</b><br/>
-						<b>ABV </b>: {{beer.abv}}
-					</div>
-					<div class = 'controls'>
-						<a class = 'btn btn-block play-btn' 
-							ng-click = 'play_note(beer.note)'
-							ng-if = 'sound_ready'
-							>></a>
-					</div>
-					<div class = 'clearfix'></div>
-				</div>
-			</div>
-		</div>
-	</section>
+	<div class="row ptop-15" ng-if = "can_save">
+			<input type = 'input' class="form-control" ng-model = 'current_song.title' placeholder="Enter a Title" maxlength="10" />
+		<div class=" three-button">
+			<button type = 'button' ng-click = 'save_song(current_song)' ng-show = "can_save" class="btn-save"><i class="icon-save"></i></button>
+		</div><!-- .col -->
+	</div><!-- .row -->
 	
-</div>
+	
+	<div class="clearfix"></div>
+	
+	<div class="row ptop-2" ng-if = 'showing_songs'>
+		<div class='row' ng-repeat = 'song in songs'>
+				<div class="song-title" ng-click = 'playback(song)'> <i class = ' icon-play'></i> {{ song.title != '' ? song.title : 'Untitled' }} </div>
+			<hr class = 'clearfix'/>
+		</div><!-- .row -->
+	</div><!-- .row -->
+	
+	<!-- !=====================  SONGS  =====================! -->
+	<div class="clearfix"></div>
+	
+	<div class="row ptop-15 clearfix">
+		<div ng-repeat="beer in beers" class="midi-button" ng-click = 'play_note(beer.note)'>
+		<!--<div class = 'beer-image' style = "background-image:url({{beer.label_image.desktop}})"></div>-->
+			<div class="title"  ng-if = 'sound_ready'>
+				<p>{{beer.name}}</p>
+				<footer>ABV: {{beer.abv}}
+				<i class="icon-play"></i>
+				</footer>
+			</div>
+				
+		</div>
+	</div><!-- .row -->
+	
+</div><!-- .container -->

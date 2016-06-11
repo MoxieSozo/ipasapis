@@ -29,6 +29,19 @@ app.service('averyService', ['$rootScope','$http', 'APIURL', '$q',  function($ro
 	}
 
 
+	var get_beers_on_tap  =  function(){
+	  var deferred = $q.defer();
+		$http.get(APIURL  +  '/taproom/on-tap')
+		.success(function( data ){
+			storage.beers_on_tap = data.beer_list.beers;
+			deferred.resolve( storage.beers_on_tap )
+		})
+		.error(function( e ){
+			deferred.reject( e );
+		})
+		return deferred.promise;
+	}
+
 	
 		
 	
@@ -65,7 +78,8 @@ app.service('averyService', ['$rootScope','$http', 'APIURL', '$q',  function($ro
 		get_all_beers 			: get_all_beers,
 		get_all_series 			: get_all_series,
 		get_beer_series 		: get_beer_series,
-		get_barrel_beers 		: get_barrel_beers
+		get_barrel_beers 		: get_barrel_beers,
+		get_beers_on_tap 		: get_beers_on_tap
 	}
 
 }])
