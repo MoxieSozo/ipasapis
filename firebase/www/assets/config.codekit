@@ -160,6 +160,83 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
+	"\/images\/baddie.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 15519,
+		"inputAbbreviatedPath": "\/images\/baddie.png",
+		"outputAbbreviatedPath": "\/images\/baddie.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/diamond.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 508,
+		"inputAbbreviatedPath": "\/images\/diamond.png",
+		"outputAbbreviatedPath": "\/images\/diamond.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/dude.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 3226,
+		"inputAbbreviatedPath": "\/images\/dude.png",
+		"outputAbbreviatedPath": "\/images\/dude.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/firstaid.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 554,
+		"inputAbbreviatedPath": "\/images\/firstaid.png",
+		"outputAbbreviatedPath": "\/images\/firstaid.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/platform.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 14973,
+		"inputAbbreviatedPath": "\/images\/platform.png",
+		"outputAbbreviatedPath": "\/images\/platform.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/sky.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 4757,
+		"inputAbbreviatedPath": "\/images\/sky.png",
+		"outputAbbreviatedPath": "\/images\/sky.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/star.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 443,
+		"inputAbbreviatedPath": "\/images\/star.png",
+		"outputAbbreviatedPath": "\/images\/star.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/js\/app.js": {
 		"fileType": 64,
 		"ignore": 1,
