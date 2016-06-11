@@ -4,15 +4,15 @@
 		<p>Water boils Yeast. Yeast ferments Malt. Malt flavors Water. </p>
 	</div><!-- .row -->
 	<div class="row vp-50 game-player">
-		<div class="score">
+		<div class="score " ng-show="score">
 			<div class="score-col">
-				2 Wins
+				{{score.wins}} Wins
 			</div><!-- .score-col -->
 			<div class="score-col">
-				1 Loss
+				{{score.losses}} Loss
 			</div><!-- .score-col -->
 			<div class="score-col">
-				3 Ties
+				{{score.ties}} Ties
 			</div><!-- .score-col -->
 		</div><!-- .score -->
 		<div class = 'red message' ng-show="message">
