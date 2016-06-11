@@ -165,9 +165,16 @@ select{
 	height:auto;
 }
 
+hr{
+	border:none;
+	border-top:1px solid @gray-light;
+}
 
 .red{
 	color:@red;
+}
+.gray{
+	color:@gray;
 }
 
 .clearfix{
@@ -178,4 +185,19 @@ select{
 }
 .left{
 	float:left;
+}
+
+.visible-landscape{
+	display:none;
+}
+.hidden-landscape{
+	display:block;
+}
+.landscape{
+	.visible-landscape{
+		display:block;
+	}
+	.hidden-landscape{
+		display:none;
+	}
 }

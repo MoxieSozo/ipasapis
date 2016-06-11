@@ -341,7 +341,7 @@
 		"fileType": 32768,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"initialSize": 8527,
+		"initialSize": 21495,
 		"inputAbbreviatedPath": "\/img\/avery-logo.png",
 		"outputAbbreviatedPath": "\/img\/avery-logo.png",
 		"outputPathIsOutsideProject": 0,
@@ -355,17 +355,6 @@
 		"initialSize": 5832,
 		"inputAbbreviatedPath": "\/img\/rochambeer-bg.png",
 		"outputAbbreviatedPath": "\/img\/rochambeer-bg.png",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
-	"\/img\/tapper\/baddie.png": {
-		"fileType": 32768,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 15519,
-		"inputAbbreviatedPath": "\/img\/tapper\/baddie.png",
-		"outputAbbreviatedPath": "\/img\/tapper\/baddie.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -403,13 +392,24 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/img\/tapper\/diamond.png": {
+	"\/img\/tapper\/concrete.png": {
 		"fileType": 32768,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"initialSize": 508,
-		"inputAbbreviatedPath": "\/img\/tapper\/diamond.png",
-		"outputAbbreviatedPath": "\/img\/tapper\/diamond.png",
+		"initialSize": 1193,
+		"inputAbbreviatedPath": "\/img\/tapper\/concrete.png",
+		"outputAbbreviatedPath": "\/img\/tapper\/concrete.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/img\/tapper\/drinker-1.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 5894,
+		"inputAbbreviatedPath": "\/img\/tapper\/drinker-1.png",
+		"outputAbbreviatedPath": "\/img\/tapper\/drinker-1.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -436,13 +436,13 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/img\/tapper\/firstaid.png": {
+	"\/img\/tapper\/ground.png": {
 		"fileType": 32768,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"initialSize": 554,
-		"inputAbbreviatedPath": "\/img\/tapper\/firstaid.png",
-		"outputAbbreviatedPath": "\/img\/tapper\/firstaid.png",
+		"initialSize": 2424,
+		"inputAbbreviatedPath": "\/img\/tapper\/ground.png",
+		"outputAbbreviatedPath": "\/img\/tapper\/ground.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -469,17 +469,6 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/img\/tapper\/star.png": {
-		"fileType": 32768,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 443,
-		"inputAbbreviatedPath": "\/img\/tapper\/star.png",
-		"outputAbbreviatedPath": "\/img\/tapper\/star.png",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
 	"\/img\/tapper\/tree.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -487,6 +476,17 @@
 		"initialSize": 7253,
 		"inputAbbreviatedPath": "\/img\/tapper\/tree.png",
 		"outputAbbreviatedPath": "\/img\/tapper\/tree.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/img\/tapper\/ui-interact.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 5820,
+		"inputAbbreviatedPath": "\/img\/tapper\/ui-interact.png",
+		"outputAbbreviatedPath": "\/img\/tapper\/ui-interact.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -692,7 +692,7 @@
 	},
 "hooks": [
 	],
-"lastSavedByUser": "Sean Bradley",
+"lastSavedByUser": "Joey Vestal",
 "manualImportLinks": {
 	},
 "projectAttributes": {

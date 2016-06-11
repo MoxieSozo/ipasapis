@@ -132,6 +132,19 @@ app.controller('appController', ['$rootScope', '$scope', '$http', '$firebaseAuth
 		$('.header').removeClass('open');
 		$('.menu').addClass('out');
 	});
+	
+	if(window.innerHeight < window.innerWidth){
+		$('body').addClass('landscape');
+	} else { 
+		$('body').removeClass('landscape');
+	}
+	window.addEventListener("orientationchange", function() {
+		if(window.innerHeight < window.innerWidth){
+		    $('body').addClass('landscape');
+		} else { 
+			$('body').removeClass('landscape');
+		}
+	}, false);
 
 }]);
 

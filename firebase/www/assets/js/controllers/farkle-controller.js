@@ -23,7 +23,7 @@ app.controller('farkleController', ['$scope', '$http','$interval', '$timeout',  
 	$scope.play_game = function(){
 		$interval.cancel($scope.timer);
 		$('.choose').removeClass('out');
-		$('.my-choice, .their-choice').removeClass('in');
+		$('.my-choice, .their-choice').removeClass('in winner');
 		$('.my-choice i').removeClass('icon-water').removeClass('icon-barley').removeClass('icon-yeast');
 		$('.their-choice i').removeClass('icon-water').removeClass('icon-barley').removeClass('icon-yeast');
 		$('.rochambeer-controls i').removeClass('active');
@@ -82,6 +82,16 @@ app.controller('farkleController', ['$scope', '$http','$interval', '$timeout',  
 			$timeout(function(){
 
 				if(mychoice.beats == theirchoice.icon){
+					$('.my-choice').addClass('winner');
+				}else if(theirchoice.beats == mychoice.icon){
+					$('.their-choice').addClass('winner');
+				}else {
+				}
+			}, 1500)
+			
+			$timeout(function(){
+
+				if(mychoice.beats == theirchoice.icon){
 					$scope.message = 'You Win!';
 					$scope.wins+=1;
 				}else if(theirchoice.beats == mychoice.icon){
@@ -92,7 +102,7 @@ app.controller('farkleController', ['$scope', '$http','$interval', '$timeout',  
 					$scope.ties +=1;
 				}
 				$scope.game_over = true;
-			}, 1000)
+			}, 3500)
 		}
 	});
 	
