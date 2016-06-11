@@ -253,8 +253,11 @@ th {
 .ptop-0 {
   padding-top: 0px;
 }
-.ptop-10 {
+.ptop-15 {
   padding-top: 10px;
+}
+.ptop-10 {
+  padding-top: 15px;
 }
 .ptop-20 {
   padding-top: 20px;
@@ -288,6 +291,9 @@ th {
 }
 .pbottom-10 {
   padding-bottom: 10px;
+}
+.pbottom-15 {
+  padding-bottom: 15px;
 }
 .pbottom-20 {
   padding-bottom: 20px;
@@ -432,40 +438,13 @@ p {
 .container > *:first-child {
   padding-top: 75px;
 }
+.row {
+  width: 100%;
+}
 [class^="vr-"],
 [class*=" vr-"] {
   width: 100%;
   height: 100vh;
-}
-.vr-100 {
-  height: 100vh;
-}
-.vr-90 {
-  height: 90vh;
-}
-.vr-80 {
-  height: 80vh;
-}
-.vr-70 {
-  height: 70vh;
-}
-.vr-60 {
-  height: 60vh;
-}
-.vr-50 {
-  height: 50vh;
-}
-.vr-40 {
-  height: 40vh;
-}
-.vr-30 {
-  height: 30vh;
-}
-.vr-20 {
-  height: 20vh;
-}
-.vr-10 {
-  height: 10vh;
 }
 .vp-100 {
   height: 100%;
@@ -497,15 +476,42 @@ p {
 .vp-10 {
   height: 10%;
 }
+.vr-100 {
+  height: 100vh;
+}
+.vr-90 {
+  height: 90vh;
+}
+.vr-80 {
+  height: 80vh;
+}
+.vr-70 {
+  height: 70vh;
+}
+.vr-60 {
+  height: 60vh;
+}
+.vr-50 {
+  height: 50vh;
+}
+.vr-40 {
+  height: 40vh;
+}
+.vr-30 {
+  height: 30vh;
+}
+.vr-20 {
+  height: 20vh;
+}
+.vr-10 {
+  height: 10vh;
+}
 .col {
   width: 50%;
 }
 .section {
-  padding: 0 15px;
+  padding: 0px 15px;
   height: 100%;
-}
-.row {
-  padding-top: 15px;
 }
 .navbar-custom .header {
   position: fixed;
@@ -630,6 +636,130 @@ ui-view {
   color: #808080;
   font-size: 30px;
 }
+.game-player {
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+.game-player .my-choice,
+.game-player .their-choice {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 50%;
+  display: block;
+  float: left;
+  overflow: hidden;
+}
+.game-player .my-choice i,
+.game-player .their-choice i {
+  width: 100%;
+  height: 80px;
+  font-size: 80px;
+  display: block;
+  -webkit-transition: all 0.5s cubic-bezier(0.425, 1.315, 0.475, 1.055) 0.7s;
+  -moz-transition: all 0.5s cubic-bezier(0.425, 1.315, 0.475, 1.055) 0.7s;
+  -o-transition: all 0.5s cubic-bezier(0.425, 1.315, 0.475, 1.055) 0.7s;
+  transition: all 0.5s cubic-bezier(0.425, 1.315, 0.475, 1.055) 0.7s;
+}
+.game-player .my-choice.winner i,
+.game-player .their-choice.winner i {
+  color: #e31b23;
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  transform: scale(1.2);
+}
+.game-player .my-choice {
+  padding-right: 40px;
+}
+.game-player .my-choice i {
+  -webkit-transform: translateX(-120%);
+  -moz-transform: translateX(-120%);
+  transform: translateX(-120%);
+  text-align: right;
+}
+.game-player .my-choice.in i {
+  -webkit-transform: translateX(0%);
+  -moz-transform: translateX(0%);
+  transform: translateX(0%);
+}
+.game-player .their-choice {
+  padding-left: 40px;
+}
+.game-player .their-choice i {
+  -webkit-transform: translateX(120%);
+  -moz-transform: translateX(120%);
+  transform: translateX(120%);
+  text-align: left;
+}
+.game-player .their-choice.in i {
+  -webkit-transform: translateX(0%);
+  -moz-transform: translateX(0%);
+  transform: translateX(0%);
+}
+.game-player .vs {
+  position: absolute;
+  top: 50%;
+  height: 50px;
+  margin-top: -25px;
+  width: 50px;
+  left: 50%;
+  margin-left: -25px;
+  font-size: 16px;
+  line-height: 50px;
+  text-align: center;
+  color: #808080;
+  text-transform: uppercase;
+  display: block;
+  float: left;
+  -webkit-opacity: 0;
+  -moz-opacity: 0;
+  opacity: 0;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.game-player .vs.in {
+  -webkit-opacity: 1;
+  -moz-opacity: 1;
+  opacity: 1;
+}
+.game-player .choose {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.game-player .choose h3 {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  transform: translateY(-50%);
+  text-align: center;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+  display: block;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  border: 1px dotted #ccc;
+  line-height: 100px;
+}
+.game-player .choose.out {
+  -webkit-opacity: 0;
+  -moz-opacity: 0;
+  opacity: 0;
+}
 .game-box {
   height: 100%;
 }
@@ -676,4 +806,11 @@ ui-view {
 .game-box .rochambeer-controls .item-3 {
   right: -4%;
   top: 8%;
+}
+#game.tapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
