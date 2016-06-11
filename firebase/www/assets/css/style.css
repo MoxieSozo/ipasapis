@@ -1028,7 +1028,6 @@ ui-view {
   top: 0;
   left: 0;
   height: 20px;
-  font-size: 12px;
   font-family: 'Montserrat', sans-serif;
   text-transform: uppercase;
   color: #ccc;
@@ -1038,6 +1037,8 @@ ui-view {
   width: 33%;
   float: left;
   display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
 }
 .game-box {
   height: 100%;
@@ -1177,6 +1178,9 @@ ui-view {
   background: rgba(227, 27, 35, 0.95);
   padding-top: 100px;
   opacity: 0;
+  -webkit-transform: translateX(-100%);
+  -moz-transform: translateX(-100%);
+  transform: translateX(-100%);
 }
 .form-control {
   border: 1px solid #ccc;
