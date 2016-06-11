@@ -27,7 +27,7 @@
   "_resolution": {
     "type": "version",
     "tag": "v3.0.4",
-    "commit": "d628ea21f68d7de5a93e144d777a581f59edbd6b"
+    "commit": "572f571b4b35d17c30a60956a4627448404ed83a"
   },
   "_source": "https://github.com/firebase/firebase-bower.git",
   "_target": "3.x.x",

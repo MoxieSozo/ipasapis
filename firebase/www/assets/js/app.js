@@ -31,6 +31,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
       controller : 'farkleController',
       templateUrl: "templates/farkle.html"
     })
+     .state('games.tapper', {
+      url: "/games/tapper",
+      controller : 'tapperController',
+      templateUrl: "templates/tapper.html"
+    })
    });
 app.run(function(){
 });
