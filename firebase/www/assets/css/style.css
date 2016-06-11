@@ -393,6 +393,9 @@ select:focus {
   width: 100%;
   height: auto;
 }
+.red {
+  color: #e31b23;
+}
 * {
   font-family: 'EB Garamond', serif;
   font-size: 14px;
@@ -698,6 +701,11 @@ ui-view {
   -webkit-transform-style: preserve-3d;
   -moz-transform-style: preserve-3d;
   transform-style: preserve-3d;
+}
+.game-player .message {
+  position: relative;
+  z-index: 100;
+  top: 20px;
 }
 .game-player .my-choice,
 .game-player .their-choice {
