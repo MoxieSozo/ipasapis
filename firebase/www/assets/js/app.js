@@ -86,11 +86,11 @@ app.controller('appController', ['$scope', '$http', '$firebaseAuth' , function( 
   });
 */
 	$('.toggler').on('click', function(){
-		$(this).toggleClass('on');
+		$('.header').toggleClass('open');
 		$('.menu').toggleClass('out');
 	});
-	$('.menu a').on('click', function(){
-		$('.toggler').removeClass('on');
+	$('.navbar-brand, .menu a').on('click', function(){
+		$('.header').removeClass('open');
 		$('.menu').addClass('out');
 	});
 

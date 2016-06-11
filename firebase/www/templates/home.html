@@ -1,11 +1,16 @@
 <div class="container text-center">
-	<div class="row vr-40 intro">
-		<div class="section border-t"><h1>Home</h1></div><!-- .section -->	
+	<div class="row">
+		<h5>Home</h5>	
 	</div><!-- .vr-40 -->
-	<div class="row vr-30">
-		<h5><a ui-sref= 'all_games'>Play a game</a></h5>
-	</div><!-- .vr-30 -->
-	<div class="row vr-30">
-		<h5><a ui-sref = "beers-on-tap">View beers on tap</a></h5>
+	<div class="row">
+		<div class="row-game" ui-sref= 'all_games'>
+			<i class="icon-hop"></i>
+			<h4>Play a game</h4>
+			<p>Test your skills</p>
+		</div><!-- .row-game -->
+		<div class="row-game" ui-sref= "beers-on-tap">
+			<i class="icon-beer"></i>
+			<h4>View beers on tap</h4>
+			<p>Learn about our brews on tap right now</p>
 	</div><!-- .vr-30 -->	
 </div><!-- .container -->
