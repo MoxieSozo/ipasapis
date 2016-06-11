@@ -31,13 +31,36 @@
 			text-indent:-10000px;
 		}
 		.toggler{
-			position:absolute;
+			position:fixed;
 			top:15px;
 			left:10px;
 			height:50px;
 			width:50px;
 			text-align:center;
 			line-height:50px;
+			z-index:9999;
+			span{
+				width:26px;
+				height:2px;
+				.border-radius(1px);
+				background:@black;
+				display:block;
+				position:absolute;
+				top:50%;
+				left:50%;
+				margin-top:-1px;
+				margin-left:-13px;
+				
+				&.dash-1{
+					margin-top:-10px;
+				}
+				&.dash-2{
+					
+				}
+				&.dash-3{
+					margin-top:8px;
+				}
+			}
 		}
 		.share{
 			position:absolute;

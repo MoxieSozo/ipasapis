@@ -572,13 +572,34 @@ p {
   text-indent: -10000px;
 }
 .navbar-custom .header .toggler {
-  position: absolute;
+  position: fixed;
   top: 15px;
   left: 10px;
   height: 50px;
   width: 50px;
   text-align: center;
   line-height: 50px;
+  z-index: 9999;
+}
+.navbar-custom .header .toggler span {
+  width: 26px;
+  height: 2px;
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
+  border-radius: 1px;
+  background: #000;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -1px;
+  margin-left: -13px;
+}
+.navbar-custom .header .toggler span.dash-1 {
+  margin-top: -10px;
+}
+.navbar-custom .header .toggler span.dash-3 {
+  margin-top: 8px;
 }
 .navbar-custom .header .share {
   position: absolute;
