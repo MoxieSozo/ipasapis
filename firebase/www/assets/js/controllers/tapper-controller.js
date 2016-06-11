@@ -47,13 +47,13 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 	
 	averyService.get_beer_filters().then( function(f){
 		filters = f;
-		console.log(f)
+		//console.log(f)
 	});
 	
 	
 	
 	$scope.$watch('recipe', function(a, b){
-		console.log(a, b);
+		//console.log(a, b);
 		
 		if( a.processing && !b.processing ) {
 			
@@ -66,7 +66,7 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 	
 	function play_tapper() {
 		game = new Phaser.Game(1160, 667, Phaser.AUTO, 'game', { preload: preload, create: create, update: update });
-		console.log(beers);
+		//console.log(beers);
 	}
 	
 		
@@ -391,7 +391,7 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 			hopText.text = 'Hops Collected: ' + hopTotal;
 			$scope.recipe.hops = hopTotal;
 			$scope.$apply();
-			console.log($scope.recipe.hops);
+			//console.log($scope.recipe.hops);
 
 			
 		}
@@ -416,7 +416,7 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 			grainText.text = 'Grains Collected: ' + grainTotal;
 			$scope.recipe.grains = grainTotal;
 			$scope.$apply();
-			console.log($scope.recipe);
+			//console.log($scope.recipe);
 		}
 	}
 	
@@ -438,7 +438,7 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 			yeastTotal += 1 ;
 			$scope.recipe.yeast = yeastTotal;
 			$scope.$apply();
-			console.log($scope.recipe);
+			//console.log($scope.recipe);
 		
 		}
 	
@@ -463,7 +463,7 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 				hasBarrel = true;
 				$scope.recipe.barrel = 1;
 				$scope.$apply();
-				console.log($scope.recipe);
+				//console.log($scope.recipe);
 			}
 		}
 	
@@ -497,11 +497,11 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 				setTimeout(function() {
 					var brew_filter = whatdidibrew();
 					
-					console.log(brew_filter);
+					//console.log(brew_filter);
 					 
 					averyService.get_beers_by_filter(brew_filter).then( function(b){
 						brewed = b;
-						console.log(b);
+						//console.log(b);
 						
 						var ran = Math.floor(Math.random() * brewed.beers.length );
 						processorText.text = 'You brewed: ' + brewed.beers[ran].name;
