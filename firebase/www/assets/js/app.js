@@ -82,7 +82,10 @@ app.controller('appController', ['$rootScope', '$scope', '$http', '$firebaseAuth
 	var challengeSync = $firebaseObject($challengeRef);
 
 	$scope.$watch('challenge', function(a, b){
-		if(typeof(a)  != 'undefined' && typeof(a.current_challenge) != 'undefined' && a.current_challenge){
+		if(typeof(a)  != 'undefined' 
+			&& typeof(a.current_challenge) != 'undefined' 
+			&& a.current_challenge
+			&& !a.active_challenge){
 			if(confirm('Accept Challenge')){
 				$scope.accept_challenge()
 			}
@@ -92,9 +95,8 @@ app.controller('appController', ['$rootScope', '$scope', '$http', '$firebaseAuth
 	
 	
 	$scope.accept_challenge = function(){
-		var c = $scope.current_challenge;
-		$scope.current_challenge = false; 
-		$scope.active_challenge = c;
+		$scope.challenge.active_challenge = angular.copy($scope.challenge.current_challenge);
+		$scope.challenge.current_challenge.active = true; 
 		$state.go('triviaChallenge')
 	}
 

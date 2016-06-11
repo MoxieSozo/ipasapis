@@ -84,16 +84,24 @@ app.controller('appController', ['$rootScope', '$scope', '$http', '$firebaseAuth
 
 		
 		$scope.add_challenge = function(){
+			$scope.challenge.active_challenge = false;
 			$scope.challenge.current_challenge = $scope.new_challenge;
 			$scope.challenge_added = true;
 			$scope.new_challenge = {};
 			$timeout(function(){
+				$scope.challenge_added = false;
 				$scope.new_challenge = false;
 			}, 2000)
 		}
 
 		$scope.end_challenge = function(){
 			$scope.challenge.current_challenge = false;
+			$scope.challenge.active_challenge = false;
+			$scope.challenge_ended = true;
+			$timeout(function(){
+				$scope.challenge_ended = false;
+				$scope.new_challenge = false;
+			}, 2000)
 		}
 
 		$scope.beers = [];
@@ -120,6 +128,18 @@ app.controller('appController', ['$rootScope', '$scope', '$http', '$firebaseAuth
 			}
 		)
 
+
+		$scope.beer_series = []
+		AS.get_all_series().then(function( data ){
+			$scope.beer_series = data
+		})
+
+
+		$scope.all_beers = []
+		AS.get_all_beers().then(function( data ){
+			$scope.all_beers = data
+		})
+		
 
 
 
