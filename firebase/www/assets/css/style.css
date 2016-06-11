@@ -472,7 +472,7 @@ p {
   padding-right: 15px;
 }
 .container > *:first-child {
-  padding-top: 75px;
+  padding-top: 80px;
 }
 .row {
   width: 100%;
@@ -786,13 +786,39 @@ ui-view {
 .game-player .my-choice i,
 .game-player .their-choice i {
   width: 100%;
-  height: 80px;
+  height: 120px;
   font-size: 80px;
+  line-height: 120px;
   display: block;
+  position: relative;
   -webkit-transition: all 0.5s cubic-bezier(0.425, 1.315, 0.475, 1.055) 0.7s;
   -moz-transition: all 0.5s cubic-bezier(0.425, 1.315, 0.475, 1.055) 0.7s;
   -o-transition: all 0.5s cubic-bezier(0.425, 1.315, 0.475, 1.055) 0.7s;
   transition: all 0.5s cubic-bezier(0.425, 1.315, 0.475, 1.055) 0.7s;
+}
+.game-player .my-choice:before,
+.game-player .their-choice:before {
+  content: "\e931";
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 120px;
+  width: 120px;
+  height: 120px;
+  position: absolute;
+  display: block;
+  top: 0px;
+  font-size: 120px;
+  color: #eee;
+  -webkit-transform: scale(0) rotate(0deg);
+  -moz-transform: scale(0) rotate(0deg);
+  transform: scale(0) rotate(0deg);
+  -webkit-opacity: 0;
+  -moz-opacity: 0;
+  opacity: 0;
 }
 .game-player .my-choice.winner i,
 .game-player .their-choice.winner i {
@@ -801,8 +827,17 @@ ui-view {
   -moz-transform: scale(1.2);
   transform: scale(1.2);
 }
+.game-player .my-choice.winner:before,
+.game-player .their-choice.winner:before {
+  -webkit-animation: winner 3s infinite;
+  -moz-animation: winner 3s infinite;
+  animation: winner 3s infinite;
+}
 .game-player .my-choice {
   padding-right: 40px;
+}
+.game-player .my-choice:before {
+  right: 20px;
 }
 .game-player .my-choice i {
   -webkit-transform: translateX(-120%);
@@ -817,6 +852,9 @@ ui-view {
 }
 .game-player .their-choice {
   padding-left: 40px;
+}
+.game-player .their-choice:before {
+  left: 20px;
 }
 .game-player .their-choice i {
   -webkit-transform: translateX(120%);
@@ -962,6 +1000,48 @@ ui-view {
   right: -4%;
   top: 8%;
 }
+@-webkit-keyframes winner {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    -webkit-transform: scale(1.2) rotate(-180deg);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(0) rotate(-360deg);
+  }
+}
+@-moz-keyframes winner {
+  0% {
+    opacity: 0;
+    -moz-transform: scale(0) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    -moz-transform: scale(1.2) rotate(-180deg);
+  }
+  100% {
+    opacity: 0;
+    -moz-transform: scale(0) rotate(-360deg);
+  }
+}
+@keyframes winner {
+  0% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2) rotate(-180deg);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0) rotate(-360deg);
+  }
+}
 /* != Midi
 -------------------------------------------------------------- */
 .play-btn {
@@ -1012,8 +1092,8 @@ button.btn-save,
 button.btn-songs {
   color: #ccc;
 }
-.three-button button {
-  width: calc(33% - 2px);
+.save-button {
+  width: 30%;
 }
 .song-title {
   height: 50px;
@@ -1029,7 +1109,7 @@ button.btn-songs {
   padding: 8px 8px;
   line-height: 32px;
   font-size: 16px;
-  width: calc(100% - 2px);
+  width: 70%;
 }
 .midi-button {
   height: 50px;
