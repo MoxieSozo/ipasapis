@@ -1176,7 +1176,6 @@ ui-view {
   z-index: 99;
   background: rgba(227, 27, 35, 0.95);
   padding-top: 100px;
-  opacity: 0;
 }
 .form-control {
   border: 1px solid #ccc;
@@ -1271,17 +1270,7 @@ button.btn-songs {
   display: block;
   float: left;
 }
-.song-title-row {
-  background: #eaeaea;
-  padding-left: 10px;
-  text-transform: uppercase;
-}
-.song-title-row:hover,
-.song-title-row:active {
-  box-shadow: 0px 0px 0px 3px #333;
-}
 .song-title {
-  font-weight: bold;
   height: 50px;
   padding: 8px 0px;
   line-height: 32px;
@@ -1290,7 +1279,6 @@ button.btn-songs {
   display: block;
 }
 .midi-button {
-  color: white;
   height: 50px;
   width: calc(34% - 2px);
   height: 30vw;
@@ -1325,6 +1313,7 @@ button.btn-songs {
   left: 10px;
   width: 100%;
   font-family: 'Montserrat', sans-serif;
+  color: #808080;
   font-size: 12px;
   width: calc(100% - 20px);
   -webkit-transition: all 0.1s ease;
@@ -1343,7 +1332,7 @@ button.btn-songs {
   height: 50px;
 }
 .midi-button:active {
-  background: #e31b23 !important;
+  background: #e31b23;
   color: #fff;
 }
 .midi-button:active footer {
@@ -1351,7 +1340,7 @@ button.btn-songs {
 }
 #game.tapper {
   position: fixed;
-  top: 0;
+  top: 70px;
   right: 0;
   bottom: 0;
   left: 0;
@@ -1368,8 +1357,6 @@ button.btn-songs {
   z-index: 9999;
 }
 /* Temp! */
-/*
 #accept-challenge {
-	display: none !important;
+  display: none !important;
 }
-*/

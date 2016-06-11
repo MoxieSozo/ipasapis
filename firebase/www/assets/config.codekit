@@ -2,6 +2,15 @@
 "CodeKitInfo": "This is a CodeKit 2.x project configuration file. It is designed to sync project settings across multiple machines. MODIFYING THE CONTENTS OF THIS FILE IS A POOR LIFE DECISION. If you do so, you will likely cause CodeKit to crash. This file is not useful unless accompanied by the project that created it in CodeKit 2. This file is not backwards-compatible with CodeKit 1.x. For more information, see: http:\/\/incident57.com\/codekit",
 "creatorBuild": "19127",
 "files": {
+	"\/css\/css\/style.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/css\/css\/style.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
 	"\/css\/games.less": {
 		"allowInsecureImports": 0,
 		"createSourceMap": 0,
@@ -390,6 +399,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/img\/tapper\/barrel.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 12542,
+		"inputAbbreviatedPath": "\/img\/tapper\/barrel.png",
+		"outputAbbreviatedPath": "\/img\/tapper\/barrel.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/img\/tapper\/city-fg.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -412,6 +432,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/img\/tapper\/clouds-dark.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 6910,
+		"inputAbbreviatedPath": "\/img\/tapper\/clouds-dark.png",
+		"outputAbbreviatedPath": "\/img\/tapper\/clouds-dark.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/img\/tapper\/clouds.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -430,6 +461,17 @@
 		"initialSize": 1193,
 		"inputAbbreviatedPath": "\/img\/tapper\/concrete.png",
 		"outputAbbreviatedPath": "\/img\/tapper\/concrete.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/img\/tapper\/control-sprite.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 3742,
+		"inputAbbreviatedPath": "\/img\/tapper\/control-sprite.png",
+		"outputAbbreviatedPath": "\/img\/tapper\/control-sprite.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -478,6 +520,39 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/img\/tapper\/mountains-trans.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 10312,
+		"inputAbbreviatedPath": "\/img\/tapper\/mountains-trans.png",
+		"outputAbbreviatedPath": "\/img\/tapper\/mountains-trans.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/img\/tapper\/mountains.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 6526,
+		"inputAbbreviatedPath": "\/img\/tapper\/mountains.jpg",
+		"outputAbbreviatedPath": "\/img\/tapper\/mountains.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/img\/tapper\/platform-red.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1089,
+		"inputAbbreviatedPath": "\/img\/tapper\/platform-red.png",
+		"outputAbbreviatedPath": "\/img\/tapper\/platform-red.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/img\/tapper\/platform.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -496,6 +571,17 @@
 		"initialSize": 262876,
 		"inputAbbreviatedPath": "\/img\/tapper\/sky.png",
 		"outputAbbreviatedPath": "\/img\/tapper\/sky.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/img\/tapper\/tank.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 11861,
+		"inputAbbreviatedPath": "\/img\/tapper\/tank.png",
+		"outputAbbreviatedPath": "\/img\/tapper\/tank.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -562,17 +648,6 @@
 		"initialSize": 16157,
 		"inputAbbreviatedPath": "\/img\/tapper\/videogame-retina.jpg",
 		"outputAbbreviatedPath": "\/img\/tapper\/videogame-retina.jpg",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
-	"\/img\/tapper\/videogame.jpg": {
-		"fileType": 16384,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 6526,
-		"inputAbbreviatedPath": "\/img\/tapper\/videogame.jpg",
-		"outputAbbreviatedPath": "\/img\/tapper\/videogame.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0

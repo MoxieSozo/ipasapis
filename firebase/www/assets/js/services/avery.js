@@ -73,13 +73,41 @@ app.service('averyService', ['$rootScope','$http', 'APIURL', '$q',  function($ro
 			
 	}
 	
+	var get_beer_filters  =  function(){
+	  var deferred = $q.defer();
+		$http.get(APIURL  +  '/beer-filters')
+		.success(function( data ){
+			storage.beer_filters = data;
+			deferred.resolve( storage.beer_filters )
+		})
+		.error(function( e ){
+			deferred.reject( e );
+		})
+		return deferred.promise;
+	}
+	
+	var get_beers_by_filter  =  function( filter ){
+	  var deferred = $q.defer();
+		$http.get(APIURL  +  '/beers?categories='+filter)
+		.success(function( data ){
+			storage.filtered_beers = data;
+			deferred.resolve( storage.filtered_beers )
+		})
+		.error(function( e ){
+			deferred.reject( e );
+		})
+		return deferred.promise;
+	}
+	
 	return {
-		storage							: storage, 
+		storage					: storage, 
 		get_all_beers 			: get_all_beers,
 		get_all_series 			: get_all_series,
 		get_beer_series 		: get_beer_series,
+		get_beer_filters		: get_beer_filters,
 		get_barrel_beers 		: get_barrel_beers,
-		get_beers_on_tap 		: get_beers_on_tap
+		get_beers_on_tap 		: get_beers_on_tap,
+		get_beers_by_filter 	: get_beers_by_filter
 	}
 
 }])
