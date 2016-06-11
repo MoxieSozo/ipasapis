@@ -41,7 +41,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
       controller : 'seriesViewController',
       templateUrl: "templates/series.view.html"
     })
-});
+     .state('games.tapper', {
+      url: "/games/tapper",
+      controller : 'tapperController',
+      templateUrl: "templates/tapper.html"
+    })
+   });
 app.constant('APIURL', 'http://apis.mondorobot.com/')
 app.run(function(){
 });
