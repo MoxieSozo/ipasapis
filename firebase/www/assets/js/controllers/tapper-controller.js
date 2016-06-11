@@ -68,9 +68,9 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 	 */
 	function preload() {
 	
-		game.load.image('sky', 		'assets/img/tapper/sky.png');
-		game.load.image('concrete', 	'assets/img/tapper/platform.png');
-		game.load.image('ground', 	'assets/img/tapper/ground.png');
+		game.load.image('sky', 		'assets/img/tapper/mountains.png');
+		game.load.image('concrete', 	'assets/img/tapper/platform-red.png');
+		game.load.image('ground', 	'assets/img/tapper/platform-red.png');
 		game.load.image('clouds', 	'assets/img/tapper/clouds.png');
 		//game.load.image('city', 	'assets/img/tapper/city.png');
 		game.load.image('tree', 	'assets/img/tapper/tree.png');
