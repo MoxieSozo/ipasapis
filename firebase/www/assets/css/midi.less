@@ -59,28 +59,28 @@ button{
 	}
 }
 .song-title-row{
-	border:1px solid @gray-light;
+	cursor:pointer;
+	background:#eaeaea;
 	padding-left:10px;
 	text-transform:uppercase;
 	&:hover, &:active{
-		border:1px solid @gray;
+		box-shadow: 0px 0px 0px 2px rgba(155, 155, 155, .5);
 	}
 }
 .song-title{
+	font-weight: bold;
 	//border:1px solid @gray-light;
 	height:50px;
 	padding:8px 0px;
 	line-height:32px;
-	font-family:@mont;
-	font-size:12px;
-	font-weight:bold;
-	text-transform:uppercase;
+	font-size:16px;
 	width:~"calc(77% - 2px)" !important;
 	display:block;
 }
 
 
 .midi-button{
+	cursor:pointer;
 	color:white;
 	height: 50px;
 	width:~"calc(34% - 2px)";
@@ -108,6 +108,7 @@ button{
 		width:~"calc(33% - 1px)";
 	}
 	.title{
+		font-weight: bold;
 		width:100%;
 		height:100%;
 		//padding-left:10px;

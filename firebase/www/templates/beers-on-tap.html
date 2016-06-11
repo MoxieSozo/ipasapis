@@ -3,6 +3,7 @@
 	<section>
 		<div class="row  intro text-center">
 			<h5>Beers On Tap</h5>	
+			<div class = 'loading' ng-show = "!tap_done">Loading Tap Beers...</div>
 		</div><!-- .vr-40 -->
 	</section>
 
@@ -22,5 +23,33 @@
 			<hr ng-if = "!$last"/>
 		</div>
 	</section>
+
+
+	<section>
+		<div class="row  intro text-center">
+			<h5>Bottles For Purchase</h5>	
+			<div class = 'loading' ng-show = "!bottles_done">Loading Bottle Beers...</div>
+		</div><!-- .vr-40 -->
+	</section>
+
+
+
+	<section class ='mtop-20'>
+		<div class = 'row {{beer.id}}  ' ng-repeat = 'beer in bottle_beers'>
+			<div class = 'row text-center mtop-20 ptop-20 pbottom-30'>
+				<img ng-src = "{{beer.label_image.desktop}}"/>
+				<h4>{{beer.name}}</h4>
+				<h6 class="mbottom-20">{{beer.style}}</h6>
+				<div class="col border-r gray">
+					<b>Price Per Glass : </b>{{beer.price_per_glass|currency}}
+				</div><!-- .col -->
+				<div class="col gray">
+					<b>Price Per Growler : </b>{{beer.price_per_growler|currency}}
+				</div><!-- .col -->
+			</div><!-- !row -->
+			<hr ng-if = "!$last"/>
+		</div>
+	</section>
+
 	
 </div>
