@@ -393,6 +393,9 @@ select:focus {
   width: 100%;
   height: auto;
 }
+.red {
+  color: #e31b23;
+}
 * {
   font-family: 'EB Garamond', serif;
   font-size: 14px;

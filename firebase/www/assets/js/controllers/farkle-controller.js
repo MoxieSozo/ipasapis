@@ -6,11 +6,17 @@ app.controller('farkleController', ['$scope', '$http','$interval', '$timeout',  
 	$scope.countdown = 6;
 	$scope.made_choice = false;
 	
+	$scope.score = {
+		wins  	: 0,
+		losses 	: 0,
+		ties		: 0
+	}
+	
 	
 	$scope.choices = {
-		 'water' 	: { 'icon' : 'water' 	, 'beats' : 'yeast'  	}, 	// water
-		 'yeast' 	: { 'icon' : 'yeast'	, 'beats' : 'barley'  },	// malt
-		 'barley' 	: { 'icon' : 'barley'	, 'beats' : 'water' }, 	// yeast
+		 'water' 	: { 'id' : 1 	, 'icon' : 'water' 	, 'beats' : 'yeast'  	}, 	// water
+		 'yeast' 	: {	'id' : 2 	, 'icon' : 'yeast'	, 'beats' : 'barley'  },	// malt
+		 'barley' : { 'id' : 3	, 'icon' : 'barley'	, 'beats' : 'water' 	}, 	// yeast
 	}
 	
 	
@@ -77,10 +83,13 @@ app.controller('farkleController', ['$scope', '$http','$interval', '$timeout',  
 
 				if(mychoice.beats == theirchoice.icon){
 					$scope.message = 'You Win!';
+					$scope.wins+=1;
 				}else if(theirchoice.beats == mychoice.icon){
 					$scope.message = 'You Lose!';
+					$scope.losses +=1;
 				}else if(mychoice.icon == theirchoice.icon){
 					$scope.message = 'Tie!';
+					$scope.ties +=1;
 				}
 				$scope.game_over = true;
 			}, 1000)
