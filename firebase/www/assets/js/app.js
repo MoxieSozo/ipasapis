@@ -51,6 +51,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
       controller : 'midiController',
       templateUrl: "templates/midi.html"
     })
+    .state('triviaChallenge', {
+      url: "/trivia-challenge",
+      controller : 'triviaChallengeController',
+      templateUrl: "templates/trivia-challenge.html"
+    })
      .state('games.tapper', {
       url: "/tapper",
       controller : 'tapperController',
@@ -69,16 +74,37 @@ app.run(function(){
 //---------------//
 // appController // 
 //---------------//
-app.controller('appController', ['$rootScope', '$scope', '$http', '$firebaseAuth' , '$firebaseArray', '$firebaseObject' , function( $rootScope, $scope, $http , $firebaseAuth, $firebaseArray, $firebaseObject ){
+app.controller('appController', ['$rootScope', '$scope', '$http', '$firebaseAuth' , '$firebaseArray', '$firebaseObject' , '$state', 
+	function( $rootScope, $scope, $http , $firebaseAuth, $firebaseArray, $firebaseObject , $state){
 	
 	var $challengeRef = firebase.database().ref().child('challenge');
 	
 	var challengeSync = $firebaseObject($challengeRef);
 
+	$scope.$watch('challenge', function(a, b){
+		if(typeof(a)  != 'undefined' && typeof(a.current_challenge) != 'undefined' && a.current_challenge){
+			if(confirm('Accept Challenge')){
+				$scope.accept_challenge()
+			}
+		}
+	}, true);
+	
+	
+	
+	$scope.accept_challenge = function(){
+		var c = $scope.current_challenge;
+		$scope.current_challenge = false; 
+		$scope.active_challenge = c;
+		$state.go('triviaChallenge')
+	}
+
+	
+
+	
 	challengeSync.$loaded(function(){
-		alert(' new sync');
+// 		alert(' new sync');
 	})
-	challengeSync.$bindTo($rootScope, 'challenge');
+	challengeSync.$bindTo($scope, 'challenge');
 
 
 

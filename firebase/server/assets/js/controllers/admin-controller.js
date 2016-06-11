@@ -1,3 +1,4 @@
-app.controller('adminController',[function(){
-	
+app.controller('adminController',[ '$scope', 'averyService', function( $scope, AS){
+
+
 }])
