@@ -1,4 +1,4 @@
-<div class = 'container'>
+<div class = 'container' id="tapper">
 	<div class = 'row'>
 		<div class ='col-xs-12'>
 			<h1>Tapper</h1>
@@ -6,18 +6,19 @@
 			<ui-view></ui-view>
 			<div id="game" class='tapper'></div>
 			<div class="hud" >
-				<div class="hops">
+				<div class="hops" ng-class="recipe.hops > 0 ? 'active' : ''">
+					<i class="icon-hop"></i><br/>
 					<span>{{ recipe.hops }}</span>
 				</div>
-				<div class="grain">
-					<span>{{ recipe.grain }}</span>
+				<div class="grain" ng-class="recipe.grains > 0 ? 'active' : ''">
+					<i class="icon-barley"></i><br/>
+					<span>{{ recipe.grains }}</span>
 				</div>
-				<div class="yeast">
+				<div class="yeast" ng-class="recipe.yeast > 0 ? 'active' : ''">
+					<i class="icon-yeast"></i><br/>
 					<span>{{ recipe.yeast }}</span>
 				</div>
-				<div class="ready">
-					<span>{{ recipe.yeast }}</span>
-				</div>
+				<p class="text-center"><button type="button" ng-click="reset()" class="reset" style="display:none;">Brew Again</button></p>
 			</div>
 			
 		</div><!-- // col-xs-12 --> 

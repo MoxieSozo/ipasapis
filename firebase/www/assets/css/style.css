@@ -1359,6 +1359,35 @@ button.btn-songs {
 #game.closed {
   display: none;
 }
+#tapper .hud {
+  display: block;
+  position: fixed;
+  z-index: 99999;
+  width: 50%;
+  margin: 0 25%;
+  left: 0;
+  right: 0;
+  bottom: 10px;
+}
+#tapper .hud > div {
+  float: left;
+  width: 30%;
+  margin: 5px;
+  color: #999;
+  text-align: center;
+  pointer-events: none;
+}
+#tapper .hud > div.active {
+  color: #DDD;
+}
+#tapper .hud > div i {
+  display: inline-block;
+  font-size: 24px;
+}
+#tapper .hud > div span {
+  display: inline-block;
+  font-weight: bold;
+}
 #view-toggle {
   position: fixed;
   top: 0;

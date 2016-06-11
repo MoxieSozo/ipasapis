@@ -65,7 +65,7 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 	
 	
 	function play_tapper() {
-		game = new Phaser.Game(1184, 667, Phaser.AUTO, 'game', { preload: preload, create: create, update: update });
+		game = new Phaser.Game(1160, 667, Phaser.AUTO, 'game', { preload: preload, create: create, update: update });
 		console.log(beers);
 	}
 	
@@ -121,18 +121,18 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 	function create() {
 		//if (!game.device.desktop){ game.input.onDown.add(gofull, this); } //go fullscreen on mobile devices
 		
-		
-		//	We're going to be using physics, so enable the Arcade Physics system
+		game.stage.backgroundColor = "#FFFFFF";
 		game.physics.startSystem(Phaser.Physics.ARCADE);
 		game.physics.arcade.y = 900;
 	
 				
 		//	A simple background for our game
-		var sky = game.add.sprite(0,70, 'sky');
-		sky.scale.x = .9;
+		var sky = game.add.sprite(0,100, 'sky');
+		sky.scale.x = 1;
 		sky.scale.y = .75;
 		
 /*
+		Fuck the clouds.  gimmme sunshine
 		clouds = game.add.group();
 		clouds.enableBody = false;
 		var cloud1 = clouds.create(900, 120, 'clouds');
@@ -153,7 +153,8 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 		ground.body.immovable = true;
 	
 		//	Ledges
-		var ledge = platforms.create(400, 400, 'concrete');
+		var ledge = platforms.create(400, 360, 'concrete');
+		ledge.scale.setTo(1,2);
 		ledge.body.immovable = true;
 		ledge = platforms.create(-150, 250, 'concrete');
 		ledge.body.immovable = true;
@@ -183,7 +184,7 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 		lvr.body.collideWorldBounds = true;
 		lvr.animations.add('activate', [0, 2, 4], 10, false);
 	
-		processorText = game.add.text(300, 600, 'Collect ingredients to brew a beer', { fontSize: '24px', fill: '#FFF' });
+		processorText = game.add.text(408, 375, 'Collect ingredients to brew a beer', { fontSize: '24px', fill: '#FFF' });
 		
 		setTimeout(function() {
 			processorText.text = '';
@@ -198,14 +199,14 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 */
 		
 		// The player aka brewer
-		player = game.add.sprite(450, game.world.height - 200, 'dude');
+		player = game.add.sprite(450, game.world.height - 220, 'dude');
 	
 		//	We need to enable physics on the player
 		game.physics.arcade.enable(player);
 		player.body.bounce.y = 0.2;
 		player.body.gravity.y = 600;
 		player.body.collideWorldBounds = true;
-		
+		player.scale.setTo(1.2,1.2);
 		
 		//	Walking animations
 		player.animations.add('left', [0, 1, 2, 3], 10, true);
@@ -224,10 +225,12 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 		hops.enableBody = true;
 		for (var i = 0; i < 4; i++)
 		{
-			var ran = Math.floor(Math.random() * 29);
+			var ran = Math.floor(Math.random() * 10);
 			//var hop = hops.create( (i+1.2) * 3 * ran + (100 * ran), 100, 'hop');
-			var hop = hops.create( (i * 100) + (10 * ran ), 100, 'hop');
-	
+			//var hop = hops.create( (i + 1) * (150) + (ran * 20), 100, 'hop');
+			var hop = hops.create( (i * 62) + 410, 100, 'hop');
+			
+			
 			//	Let gravity do its thing
 			hop.body.gravity.y = 900;
 	
@@ -256,13 +259,14 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 		// create the grains
 		for (var i = 0; i < 9; i++)
 		{
-			var ran = Math.floor(Math.random() * 100 );
-			var yeast = yeasts.create( (2 * ran ) * 2 + 100, (i * ran ) * 2 + 5, 'yeast');
+			//var ran = Math.floor(Math.random() * 100 );
+			var ran = getRand(1, 100);
+			var yeast = yeasts.create( 100 + ( ran * 5) * (i+1), (i+1 * ran ) + 20, 'yeast');
 	
 			//	Let gravity do its thing
 			yeast.body.gravity.y = ran * .1;
-			yeast.body.bounce.y = 0.1 + Math.random() * 0.01;
-			yeast.scale.setTo(.3,.3);
+			yeast.body.bounce.y = 0.1 + Math.random() * 0.2;
+			yeast.scale.setTo(.4,.4);
 		}
 		yeastText = game.add.text(16, 80, 'Yeast Collected: No', { fontSize: '32px', fill: '#FFF' });
 		
@@ -326,14 +330,8 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 		{
 			//	Move to the left
 			player.body.velocity.x = -150;
-	
 			player.animations.play('left');
 			
-/*
-			setTimeout( function() {
-				processorText.scale.setTo(0,0);
-			}, 1500 );
-*/
 		}
 		else if (cursors.right.isDown || right )
 		{
@@ -341,11 +339,6 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 			player.body.velocity.x = 150;
 			player.animations.play('right');
 			
-/*
-			setTimeout( function() {
-				processorText.scale.setTo(0,0);
-			}, 1500 );
-*/
 			
 		}
 		else
@@ -365,7 +358,7 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 		
 		if( interact || cursors.down.isDown ) {
 			
-				
+			player.body.velocity.y = 2;	
 			if( right || cursors.right.isDown  ) {
 				player.frame = 9;
 			} else  {
@@ -392,10 +385,8 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 		
 		if( interact || cursors.down.isDown ) {
 			
-			// Removes the hop from the screen
 			hop.kill();
 		
-			//	Add and update the score
 			hopTotal += 1;
 			hopText.text = 'Hops Collected: ' + hopTotal;
 			$scope.recipe.hops = hopTotal;
@@ -445,7 +436,6 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 
 			//	Add and update the score
 			yeastTotal += 1 ;
-			//yeastText.text = 'Yeast Collected: Yes';
 			$scope.recipe.yeast = yeastTotal;
 			$scope.$apply();
 			console.log($scope.recipe);
@@ -467,12 +457,10 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 		if( interact || cursors.down.isDown ) {
 			barrel.kill();
 			
-			// Removes the hop from the screen
 			if( !hasBarrel ) {
 				
 				//	Add and update the score
 				hasBarrel = true;
-				//yeastText.text = 'Yeast Collected: Yes';
 				$scope.recipe.barrel = 1;
 				$scope.$apply();
 				console.log($scope.recipe);
@@ -497,9 +485,6 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 			if( $scope.recipe.processing !== true && canProcess == true ) {
 				
 				processorText.text = 'Ingredients added.  Brewing...! ';
-				//processorText.fontSize = '36px'; //, fill: '#F00' 
-				
-				//lvr.animations.play('activate');
 				lvr.animations.play('activate');
 				
 				
@@ -520,6 +505,11 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 						
 						var ran = Math.floor(Math.random() * brewed.beers.length );
 						processorText.text = 'You brewed: ' + brewed.beers[ran].name;
+	
+						setTimeout(function() {
+							$('.hud > div').fadeOut();
+							$('.hud .reset').fadeIn();
+						}, 1500);
 						
 					});
 					
@@ -570,10 +560,11 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 	
 	function build_buttons() {
 		var buttonPos = {
-			jump: [900,575],
-			left: [50,575],
-			right: [150,575],
-			interact: [800,575]
+			jump: [1040,565],
+			interact: [940,565],
+			left: [50,565],
+			right: [150,565]
+			
 		};
 		
 		
@@ -642,6 +633,19 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 		
 		
 		return brew_cat;
+	}
+	
+	function getRand(min, max) {
+		return Math.random() * (max - min) + min;
+	}
+	
+	$scope.reset = function() {
+		$scope.recipe = { hops: 0, grains: 0, yeast: 0, barrel: 0, processing: false };
+		$('.hud > div').fadeIn();
+		$('.hud .reset').fadeOut();
+		create();
+		window.location = '/#/games/tapper';
+		
 	}
 	
 	
