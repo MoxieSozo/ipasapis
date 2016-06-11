@@ -1,1 +1,0 @@
-app.controller("homeController",["$scope","$http",function(o,t){}]);

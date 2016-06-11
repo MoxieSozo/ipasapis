@@ -31,7 +31,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
       controller : 'farkleController',
       templateUrl: "templates/farkle.html"
     })
-   });
+});
+app.constant('APIURL', 'http://apis.mondorobot.com/')
 app.run(function(){
 });
 
