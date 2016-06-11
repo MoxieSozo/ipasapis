@@ -119,7 +119,7 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 	 * @return void
 	 */
 	function create() {
-		if (!game.device.desktop){ game.input.onDown.add(gofull, this); } //go fullscreen on mobile devices
+		//if (!game.device.desktop){ game.input.onDown.add(gofull, this); } //go fullscreen on mobile devices
 		
 		game.stage.backgroundColor = "#FFFFFF";
 		game.physics.startSystem(Phaser.Physics.ARCADE);
