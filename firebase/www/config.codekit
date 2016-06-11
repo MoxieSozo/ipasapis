@@ -500,7 +500,7 @@
 		"fileType": 32768,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"initialSize": 6411,
+		"initialSize": 6714,
 		"inputAbbreviatedPath": "\/assets\/img\/tapper\/drinker.png",
 		"outputAbbreviatedPath": "\/assets\/img\/tapper\/drinker.png",
 		"outputPathIsOutsideProject": 0,
@@ -610,7 +610,7 @@
 		"fileType": 32768,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"initialSize": 5820,
+		"initialSize": 6493,
 		"inputAbbreviatedPath": "\/assets\/img\/tapper\/ui-interact.png",
 		"outputAbbreviatedPath": "\/assets\/img\/tapper\/ui-interact.png",
 		"outputPathIsOutsideProject": 0,
@@ -661,6 +661,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/assets\/img\/tapper\/videogame-thin.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 8263,
+		"inputAbbreviatedPath": "\/assets\/img\/tapper\/videogame-thin.jpg",
+		"outputAbbreviatedPath": "\/assets\/img\/tapper\/videogame-thin.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/assets\/js\/app.js": {
 		"fileType": 64,
 		"ignore": 1,
@@ -696,7 +707,7 @@
 		},
 	"\/assets\/js\/controllers\/farkle-controller.js": {
 		"fileType": 64,
-		"ignore": 1,
+		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/assets\/js\/controllers\/farkle-controller.js",
 		"outputAbbreviatedPath": "\/assets\/js\/controllers\/min\/farkle-controller-min.js",
@@ -773,7 +784,7 @@
 		},
 	"\/assets\/js\/controllers\/tapper-controller.js": {
 		"fileType": 64,
-		"ignore": 1,
+		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/assets\/js\/controllers\/tapper-controller.js",
 		"outputAbbreviatedPath": "\/assets\/js\/controllers\/min\/tapper-controller-min.js",
@@ -16443,128 +16454,116 @@
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/assets\/js\/controllers\/tapper-controller.js",
+			"linkedFileAbbreviatedPath": "\/assets\/js\/controllers\/tap-beers-controller.js",
 			"position": 9,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/assets\/js\/controllers\/tap-beers-controller.js",
+			"linkedFileAbbreviatedPath": "\/assets\/js\/controllers\/series-view-controller.js",
 			"position": 10,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/assets\/js\/controllers\/series-view-controller.js",
+			"linkedFileAbbreviatedPath": "\/assets\/js\/controllers\/beers-controller.js",
 			"position": 11,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/assets\/js\/controllers\/beers-controller.js",
+			"linkedFileAbbreviatedPath": "\/assets\/js\/controllers\/games-controller.js",
 			"position": 12,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/assets\/js\/controllers\/farkle-controller.js",
+			"linkedFileAbbreviatedPath": "\/assets\/js\/controllers\/home-controller.js",
 			"position": 13,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/assets\/js\/controllers\/games-controller.js",
+			"linkedFileAbbreviatedPath": "\/lib\/midi\/inc\/shim\/Base64.js",
 			"position": 14,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/assets\/js\/controllers\/home-controller.js",
+			"linkedFileAbbreviatedPath": "\/lib\/midi\/inc\/shim\/Base64binary.js",
 			"position": 15,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/lib\/midi\/inc\/shim\/Base64.js",
+			"linkedFileAbbreviatedPath": "\/lib\/midi\/inc\/shim\/WebAudioAPI.js",
 			"position": 16,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/lib\/midi\/inc\/shim\/Base64binary.js",
+			"linkedFileAbbreviatedPath": "\/lib\/midi\/js\/midi\/audioDetect.js",
 			"position": 17,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/lib\/midi\/inc\/shim\/WebAudioAPI.js",
+			"linkedFileAbbreviatedPath": "\/lib\/midi\/js\/midi\/gm.js",
 			"position": 18,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/lib\/midi\/js\/midi\/audioDetect.js",
+			"linkedFileAbbreviatedPath": "\/lib\/midi\/js\/midi\/loader.js",
 			"position": 19,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/lib\/midi\/js\/midi\/gm.js",
+			"linkedFileAbbreviatedPath": "\/lib\/midi\/js\/midi\/plugin.audiotag.js",
 			"position": 20,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/lib\/midi\/js\/midi\/loader.js",
+			"linkedFileAbbreviatedPath": "\/lib\/midi\/js\/midi\/plugin.webaudio.js",
 			"position": 21,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/lib\/midi\/js\/midi\/plugin.audiotag.js",
+			"linkedFileAbbreviatedPath": "\/lib\/midi\/js\/midi\/plugin.webmidi.js",
 			"position": 22,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/lib\/midi\/js\/midi\/plugin.webaudio.js",
+			"linkedFileAbbreviatedPath": "\/lib\/midi\/js\/util\/dom_request_xhr.js",
 			"position": 23,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/lib\/midi\/js\/midi\/plugin.webmidi.js",
+			"linkedFileAbbreviatedPath": "\/lib\/midi\/js\/util\/dom_request_script.js",
 			"position": 24,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/lib\/midi\/js\/util\/dom_request_xhr.js",
+			"linkedFileAbbreviatedPath": "\/assets\/js\/controllers\/midi-controller.js",
 			"position": 25,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/lib\/midi\/js\/util\/dom_request_script.js",
+			"linkedFileAbbreviatedPath": "\/lib\/phaser\/build\/phaser.min.js",
 			"position": 26,
 			"type": 0
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/assets\/js\/controllers\/midi-controller.js",
-			"position": 27,
-			"type": 0
-			},
-		{
-			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/lib\/phaser\/build\/phaser.min.js",
-			"position": 28,
-			"type": 0
-			},
-		{
-			"followForSyntaxChecking": 1,
 			"linkedFileAbbreviatedPath": "\/lib\/jquery.animate-colors-min.js",
-			"position": 29,
+			"position": 27,
 			"type": 0
 			}
 		]
