@@ -19,7 +19,6 @@ app.service('averyService', ['$rootScope','$http', 'APIURL', '$q',  function($ro
 	  var deferred = $q.defer();
 		$http.get(APIURL  +  '/barrel-aged-beers')
 		.success(function( data ){
-			console.log( data );
 			storage.barrel_beers = data.barrel_aged_beers;
 			deferred.resolve( storage.barrel_aged_beers )
 		})
@@ -29,6 +28,9 @@ app.service('averyService', ['$rootScope','$http', 'APIURL', '$q',  function($ro
 		return deferred.promise;
 	}
 
+
+	
+		
 	
 
 	var get_all_series  =  function(){
