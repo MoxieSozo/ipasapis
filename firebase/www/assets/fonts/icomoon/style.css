@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'icomoon';
-    src:    url('fonts/icomoon.eot?s21v3z');
-    src:    url('fonts/icomoon.eot?s21v3z#iefix') format('embedded-opentype'),
-        url('fonts/icomoon.ttf?s21v3z') format('truetype'),
-        url('fonts/icomoon.woff?s21v3z') format('woff'),
-        url('fonts/icomoon.svg?s21v3z#icomoon') format('svg');
+    src:    url('fonts/icomoon.eot?r21h3x');
+    src:    url('fonts/icomoon.eot?r21h3x#iefix') format('embedded-opentype'),
+        url('fonts/icomoon.ttf?r21h3x') format('truetype'),
+        url('fonts/icomoon.woff?r21h3x') format('woff'),
+        url('fonts/icomoon.svg?r21h3x#icomoon') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -24,8 +24,23 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-barley:before {
+    content: "\e90f";
+}
+.icon-yeast:before {
+    content: "\e910";
+}
 .icon-water:before {
     content: "\e92b";
+}
+.icon-rochambo:before {
+    content: "\e92c";
+}
+.icon-rochambeer:before {
+    content: "\e92c";
+}
+.icon-Rochambeer:before {
+    content: "\e92c";
 }
 .icon-brewingprocess-01:before {
     content: "\e900";
@@ -72,12 +87,6 @@
 .icon-hop:before {
     content: "\68";
 }
-.icon-barley:before {
-    content: "\e90f";
-}
-.icon-yeast:before {
-    content: "\e910";
-}
 .icon-mouth:before {
     content: "\e911";
 }
@@ -88,6 +97,12 @@
     content: "\e913";
 }
 .icon-beer:before {
+    content: "\e914";
+}
+.icon-tapper:before {
+    content: "\e914";
+}
+.icon-Tapper:before {
     content: "\e914";
 }
 .icon-science:before {

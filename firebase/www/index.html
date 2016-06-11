@@ -13,20 +13,20 @@
     <nav class="navbar-custom">
 	    <div class="header">
 			<a class="navbar-brand" href="#">Avery Brewing</a>
-        	<a class="toggler" href="#"><i class="icon-prev"></i></a>
+        	<a class="toggler" ><i class="icon-prev"></i></a>
         	<a class="share" href="#"><i class="icon-share"></i></a>
         </div><!-- .header -->
 	    <div class="menu out">
 		    <div class="menu-head vp-10">
 				<div class="close">
-					<a href="#" class="closer"><i class="icon-close"></i></a>
+					<a class="closer"><i class="icon-close"></i></a>
 				</div><!-- .close -->
 		    </div><!-- .vp-30 border-b -->
 		    <div class="item vp-30 border-b">
 	            <div><a ui-sref = '/'>Home</a></div>		    	
 		    </div><!-- .vp-30 border-b -->
             <div class="item vp-30 border-b">
-	            <div><a ui-sref= 'games'>Play a Game</a></div>
+	            <div><a ui-sref= 'all_games'>Play a Game</a></div>
 	        </div>
             <div class="item vp-30">
 	            <div><a>Beers on Tap</a></div>
@@ -34,12 +34,12 @@
         </div><!-- .menu -->
     </nav><!-- .navbar-custom -->
 	  
-	<ui-view></ui-view>
-	  
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/3.0.3/firebase.js"></script>
-    <script src="https://cdn.firebase.com/libs/angularfire/2.0.1/angularfire.min.js"></script>
+		<ui-view></ui-view>
+		<script src="lib/lodash/dist/lodash.min.js"></script>
+		<script src="lib/angular/angular.min.js"></script>
     <script src="lib/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="lib/angularfire/dist/angularfire.min.js"></script>
+		<script src="lib/firebase/firebase.js"></script>
     <script src="lib/jquery/dist/jquery.min.js"
     <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="assets/js/app.js"></script>

@@ -1,11 +1,10 @@
 <div class="container text-center">
-	<div class="vr-40 intro">
-		<h1>Games</h1>	
-	</div><!-- .vr-40 -->
-	<div class="vr-60">
-		<ul>
-			<li ng-repeat = 'game in games' ui-sref = 'games.{{game.id}}'>{{game.title}}</li>
-		</ul>
-		<ui-view></ui-view>
-	</div><!-- .vr-30 -->	
+	<div class="intro">
+	</div><!-- .intro -->
+	<div class="games sub-page border-t">	
+		<ui-view></ui-view>	
+	</div><!-- .games -->
+	<ul class="sub-nav">
+		<li ng-repeat = 'game in games' ui-sref = 'games.{{game.id}}'><i class="icon-{{game.title}}"></i></li>
+	</ul>
 </div><!-- .container -->

@@ -27,7 +27,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: "templates/games.html"
     })
     .state('games.farkle', {
-      url: "/games/rochambeer",
+      url: "/rochambeer",
       controller : 'farkleController',
       templateUrl: "templates/farkle.html"
     })
@@ -47,7 +47,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: "templates/midi.html"
     })
      .state('games.tapper', {
-      url: "/games/tapper",
+      url: "/tapper",
       controller : 'tapperController',
       templateUrl: "templates/tapper.html"
     })
