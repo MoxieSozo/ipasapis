@@ -656,6 +656,28 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
+	"\/soundfont\/banjo-mp3.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/soundfont\/banjo-mp3.js",
+		"outputAbbreviatedPath": "\/soundfont\/min\/banjo-mp3-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/soundfont\/banjo-ogg.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/soundfont\/banjo-ogg.js",
+		"outputAbbreviatedPath": "\/soundfont\/min\/banjo-ogg-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/soundfont\/synth_drum-mp3.js": {
 		"fileType": 64,
 		"ignore": 1,
