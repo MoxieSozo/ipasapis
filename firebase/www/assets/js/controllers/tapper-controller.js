@@ -1,6 +1,6 @@
 app.controller('tapperController', ['$scope', '$http', 'averyService', function( $scope, $http, averyService ){
 	
-	$scope.recipe = { hops: 0, grains: 0, yeast: false, processing: false };
+	$scope.recipe = { hops: 0, grains: 0, yeast: 0, barrel: 0, processing: false };
 	
 	
 	var game;
@@ -30,8 +30,12 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 	var hopText; // scoreText
 	var grainTotal = 0;
 	var grainText;
-	var hasYeast = false;
+	var yeastTotal = 0;
+	var barrels;
+	var hasBarrel = false;
 	var processorText;
+	var filters;
+	var brewed;
 	
 	
 	
@@ -39,6 +43,11 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 	averyService.get_all_beers().then( function(b){
 		beers = b;
 		play_tapper();
+	});
+	
+	averyService.get_beer_filters().then( function(f){
+		filters = f;
+		console.log(f)
 	});
 	
 	
@@ -80,6 +89,7 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 		game.load.image('hop', 		'assets/img/tapper/hop.svg');
 		game.load.image('grain', 		'assets/img/tapper/grain.svg');
 		game.load.image('yeast', 		'assets/img/tapper/yeast.svg');
+		game.load.image('barrel', 		'assets/img/tapper/barrel.png');
 		//game.load.image('water', 		'assets/img/tapper/hop.svg');
 		//game.load.image('flower', 		'assets/img/tapper/hop.svg');
 		game.load.image('processor', 		'assets/img/tapper/tank.png');
@@ -257,7 +267,22 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 		yeastText = game.add.text(16, 80, 'Yeast Collected: No', { fontSize: '32px', fill: '#FFF' });
 		
 		
+		//	Barrel
+		barrels = game.add.group();
+		barrels.enableBody = true;
 		
+		//var ran = Math.floor(Math.random() * 29);
+		//var hop = hops.create( (i+1.2) * 3 * ran + (100 * ran), 100, 'hop');
+		var barrel = barrels.create( 80, 0, 'barrel');
+		barrel.scale.setTo(.4,.4);
+		//	Let gravity do its thing
+		barrel.body.gravity.y = 1900;
+
+		//	This just gives each hop a slightly random bounce value
+		hop.body.bounce.y = 0.1 + Math.random() * 0.1;
+	
+		//hopText = game.add.text(16, 16, 'Hops Collected: 0', { fontSize: '32px', fill: '#FFF' });
+
 		
 		
 		
@@ -279,6 +304,7 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 		game.physics.arcade.collide(hops, platforms);
 		game.physics.arcade.collide(grains, platforms);
 		game.physics.arcade.collide(yeasts, platforms);
+		game.physics.arcade.collide(barrels, platforms);
 		//game.physics.arcade.collide(flower, platforms);
 		//game.physics.arcade.collide(water, platforms);
 		game.physics.arcade.collide(processor, platforms);
@@ -289,6 +315,7 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 		game.physics.arcade.overlap(player, grains, collectGrain, null, this);
 		game.physics.arcade.overlap(player, yeasts, collectYeast, null, this);
 		game.physics.arcade.overlap(player, processor, processIngredients, null, this);
+		game.physics.arcade.overlap(player, barrels, collectBarrel, null, this);
 		//game.physics.arcade.overlap(player, lever, processIngredients, null, this);
 	
 		//	Reset the players velocity (movement)
@@ -415,14 +442,38 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 		
 		if( interact || cursors.down.isDown ) {
 			yeast.kill();
+
+			//	Add and update the score
+			yeastTotal += 1 ;
+			//yeastText.text = 'Yeast Collected: Yes';
+			$scope.recipe.yeast = yeastTotal;
+			$scope.$apply();
+			console.log($scope.recipe);
+		
+		}
+	
+	}
+	
+	/**
+	 * collectBarrel function.
+	 * 
+	 * @access public
+	 * @param mixed player
+	 * @param mixed yeast
+	 * @return void
+	 */
+	function collectBarrel (player, barrel) {
+		
+		if( interact || cursors.down.isDown ) {
+			barrel.kill();
 			
 			// Removes the hop from the screen
-			if( !hasYeast ) {
+			if( !hasBarrel ) {
 				
 				//	Add and update the score
-				hasYeast = true;
-				yeastText.text = 'Yeast Collected: Yes';
-				$scope.recipe.yeast = true;
+				hasBarrel = true;
+				//yeastText.text = 'Yeast Collected: Yes';
+				$scope.recipe.barrel = 1;
 				$scope.$apply();
 				console.log($scope.recipe);
 			}
@@ -437,7 +488,7 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 		
 			$.each($scope.recipe, function(k,v) {
 				//console.log(k,v);
-				if( !v && k !== 'processing' ) {
+				if( !v && k !== 'processing' && k !== 'barrel' ) {
 					canProcess = false;
 				}
 			});
@@ -445,7 +496,7 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 			
 			if( $scope.recipe.processing !== true && canProcess == true ) {
 				
-				processorText.text = 'Ingredients added.  Time to Brew! ';
+				processorText.text = 'Ingredients added.  Brewing...! ';
 				//processorText.fontSize = '36px'; //, fill: '#F00' 
 				
 				//lvr.animations.play('activate');
@@ -455,16 +506,36 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 				$scope.recipe.processing = true;
 				$scope.$apply();
 				
-				setTimeout(function() {
-					var ran = Math.floor(Math.random() * beers.length );
-					
-					processorText.text = 'You brewed: ' + beers[ran].name;
 				
-				}, 500);
+				
+				
+				setTimeout(function() {
+					var brew_filter = whatdidibrew();
+					
+					console.log(brew_filter);
+					 
+					averyService.get_beers_by_filter(brew_filter).then( function(b){
+						brewed = b;
+						console.log(b);
+						
+						var ran = Math.floor(Math.random() * brewed.beers.length );
+						processorText.text = 'You brewed: ' + brewed.beers[ran].name;
+						
+					});
+					
+					
+				
+				}, 3000);
 				
 				
 			} else {
-				processorText.text = 'More ingredients needed. ';
+				if(  $scope.recipe.processing === true ) {
+					processorText.text = 'Brewing. Hold tight! ';
+				} else {
+					processorText.text = 'More ingredients needed. ';
+				}
+				
+				
 				
 				
 			}
@@ -548,6 +619,30 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 		buttoninteract.scale.y = 0.5;
 
 	} 
-
+	
+	
+	function whatdidibrew() {
+		var brew_cat = 'Beyond Reinheitsgebot'; // I hav eno clue what this means so it will be the catch-all
+		
+		//is it in a barrel...
+		if( $scope.recipe.barrel >= 1 ) {
+			
+			if( $scope.recipe.grains >= $scope.recipe.yeast ) {
+				brew_cat = 'wood';
+			} else {
+				brew_cat = 'sour/wild';
+			}
+			
+		}else if( $scope.recipe.hops > $scope.recipe.grains && $scope.recipe.yeast < 2 ) {
+			brew_cat = 'hop-forward';
+		} else if( $scope.recipe.hops < $scope.recipe.grains && $scope.recipe.yeast < 2 ) {
+			brew_cat = 'malt-forward';
+		}
+		
+		
+		
+		return brew_cat;
+	}
+	
 	
 }])
