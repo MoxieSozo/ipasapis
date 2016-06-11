@@ -1022,6 +1022,20 @@ ui-view {
   -moz-transform: translateY(-50%);
   transform: translateY(-50%);
 }
+.game-player .score {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  font-size: 12px;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  color: #ccc;
+}
+.game-player .score .score-col {
+  width: 33%;
+}
 .game-box {
   height: 100%;
 }
