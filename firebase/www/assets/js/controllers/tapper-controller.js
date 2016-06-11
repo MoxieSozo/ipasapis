@@ -14,7 +14,7 @@ app.controller('tapperController', ['$scope', '$http', function( $scope, $http )
 		    game.load.spritesheet('buttonleft', 'assets/images/button.svg',120,120);
 		    game.load.spritesheet('buttondiagonal', 'assets/images/button.svg',120,120);
 		    game.load.spritesheet('buttonfire', 'assets/images/button.svg',120,120);
-		    game.load.image('buttonjump', 'assets/images/button.svg',120,120);
+		    game.load.spritesheet('buttonjump', 'assets/images/button.svg',120,120);
             
             //full screen
             game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
@@ -31,8 +31,8 @@ app.controller('tapperController', ['$scope', '$http', function( $scope, $http )
         var right = false;
         var up = jump = false;
         var drop = false;
-        var totalHops = 0;
-        var scoreText;
+        var hopTotal = 0; // score
+        var hopText; // scoreText
         
         function create() {
         	if (!game.device.desktop){ game.input.onDown.add(gofull, this); } //go fullscreen on mobile devices
@@ -86,7 +86,7 @@ app.controller('tapperController', ['$scope', '$http', function( $scope, $http )
             //  Finally some hops to collect
             hops = game.add.group();
         
-            //  We will enable physics for any hop that is created in this group
+            //  We will enable physics for any star that is created in this group
             hops.enableBody = true;
         
             // create the hops
@@ -103,8 +103,7 @@ app.controller('tapperController', ['$scope', '$http', function( $scope, $http )
             }
         
             //  The score
-            hopText = game.add.text(16, 16, 'Hops: 0', { fontSize: '32px', fill: '#FFF' });
-            wheatText = game.add.text(16, 48, 'Wheat: 0', { fontSize: '32px', fill: '#FFF' });
+            hopText = game.add.text(16, 16, 'Hops Collected: 0', { fontSize: '32px', fill: '#FFF' });
         
             //  Our controls
             // Desktop / keyboard
@@ -166,8 +165,8 @@ app.controller('tapperController', ['$scope', '$http', function( $scope, $http )
             hop.kill();
         
             //  Add and update the score
-            totalHops += 1;
-            hopText.text = 'Hops Collected: ' + totalHops;
+            hopTotal += 1;
+            hopText.text = 'Hops Collected: ' + hopTotal;
         
         }
         
