@@ -412,7 +412,7 @@ h6,
   padding-right: 15px;
 }
 .container > *:first-child {
-  padding-top: 90px;
+  padding-top: 75px;
 }
 [class^="vr-"],
 [class*=" vr-"] {
@@ -482,6 +482,10 @@ h6,
 .col {
   width: 50%;
 }
+.section {
+  padding: 0 15px;
+  height: 100%;
+}
 .navbar-custom .header {
   position: fixed;
   top: 0;
@@ -505,7 +509,7 @@ h6,
 }
 .navbar-custom .header .toggler {
   position: absolute;
-  top: 10px;
+  top: 15px;
   left: 10px;
   height: 50px;
   width: 50px;
@@ -514,7 +518,7 @@ h6,
 }
 .navbar-custom .header .share {
   position: absolute;
-  top: 10px;
+  top: 15px;
   right: 10px;
   width: 50px;
   height: 50px;
@@ -543,7 +547,7 @@ h6,
 }
 .navbar-custom .menu .menu-head .close .closer {
   position: absolute;
-  top: 10px;
+  top: 15px;
   left: 10px;
   height: 50px;
   width: 50px;
