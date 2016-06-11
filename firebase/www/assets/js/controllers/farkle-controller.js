@@ -21,10 +21,13 @@ app.controller('farkleController', ['$scope', '$http','$interval', '$timeout',  
 		$('.my-choice i').removeClass('icon-water').removeClass('icon-barley').removeClass('icon-yeast');
 		$('.their-choice i').removeClass('icon-water').removeClass('icon-barley').removeClass('icon-yeast');
 		$('.rochambeer-controls i').removeClass('active');
+
+		$scope.made_choice = false;
 		$scope.message = '';
 		$scope.game_over = false;
 		$scope.countdown = 5;
 		$scope.counting_down = true;
+
 		$scope.timer = $interval(function(){
 			$scope.countdown -= 1;
 			if($scope.countdown === 0){
@@ -32,8 +35,9 @@ app.controller('farkleController', ['$scope', '$http','$interval', '$timeout',  
 				$scope.playing = true;
 				$scope.counting_down = false;
 				if(!$scope.made_choice){
-						$scope.game_over = true;
-						$scope.message = 'Time is Up!'
+					$scope.time_ran_out = true;
+					$scope.game_over = true;
+					$scope.message = 'Time is Up!'
 				}
 			}
 		}, 1000);
@@ -42,7 +46,9 @@ app.controller('farkleController', ['$scope', '$http','$interval', '$timeout',  
 	
 		
 	$('.rochambeer-controls i').on('click', function(){
-		if($scope.counting_down){
+		if($scope.counting_down ){
+			$scope.made_choice = true;
+			$scope.counting_down = false;
 			$('.rochambeer-controls i').removeClass('active');
 			$(this).toggleClass('active');
 			
