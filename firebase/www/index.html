@@ -30,18 +30,31 @@
 	        </div>
         </div><!-- .menu -->
     </nav><!-- .navbar-custom -->
-    
 	  
 		<ui-view></ui-view>
-		
-		<div id = 'accept-challenge' >
-			<h1>Want Free Beer?</h1>
-			<form>
-				<input type = 'tel' ng-model = 'accept_with_phone' />
-				<button type = 'button' ></button>
-			</form>
-		</div>
-		
+    
+
+			
+		<div id = 'accept-challenge' class = 'text-center' ng-show = "show_challenge_modal" >
+			<div class="container text-center">
+				<div class="row">
+					<h1>Want Free Beer? </h1>
+				</div><!-- .vr-40 -->
+				<div class = 'row'>
+					<form>
+						<div class = 'row ptop-20'>
+							<input type = 'tel' ng-model = 'accept_with_phone' class = 'form-control full' placeholder="Phone Number"/>
+						</div>
+						<div class="clearfix"></div>
+						<div class = 'row ptop-20'>
+							<button class = 'btn btn-success' type = 'button' ng-click= "accept_challenge()" >Yes Please!</button>
+							<button class = 'btn btn-danger' type = 'button' ng-click = "decline_challenge()" >Not Today. Thanks!</button>
+						</div>
+				
+					</form>
+				</div>
+			</div>
+		</div><!-- .container -->		
 		
 		<script src="lib/lodash/dist/lodash.min.js"></script>
 		<script src="lib/angular/angular.min.js"></script>

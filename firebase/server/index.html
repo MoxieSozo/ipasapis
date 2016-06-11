@@ -18,40 +18,7 @@
     </nav><!-- .navbar-custom -->
     
 
-
-
-			<div class = 'row mtop-100' ng-show = "challenge.current_challenge">
-				<div class = 'col-xs-10 col-xs-offset-1'>
-
-
-
-					<div class="alert alert-success alert-dismissable" ng-show = "challenge_added">
-						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-						<strong>Well done!</strong> Challenge has begun. 
-					</div>
-
-					<div class = 'well'>
-						<h3>Current Challenge</h3>
-						<h4>Beer To Win</h4>
-						<h5>{{challenge.current_challenge.beer.name}}</h5>
-						<hr/>
-						
-						<h4>Options</h4>
-						<ul class = 'list-group'>
-							<li class = 'list-group-item' ng-repeat = 'beer in challenge.current_challenge.beer_selection'>
-								<h5>{{beer.name}}</h5>
-							</li>
-						</ul>
-						<hr/>
-	
-						<h4>Answer</h4>
-						<h5>{{challenge.current_challenge.answer.name}}</h5>
-						<hr/>
-						<button type = 'button' class = 'btn btn-danger' ng-click = "end_challenge()">End Challenge</button>
-					</div>
-	
-				</div>
-			</div>
+		<div class = 'container'>
 
 			<div class = 'row mtop-100' ng-hide = "challenge.current_challenge">
 				
@@ -97,9 +64,56 @@
 				</div>
 			</div>
 			
+			
+			<div class = 'row mtop-100' ng-show = "challenge.current_challenge">
+				<div class = 'col-xs-10 col-xs-offset-1'>
+
+					<h3>Current Challenge</h3>
+					<hr/>
+
+					<div class="alert alert-success alert-dismissable" ng-show = "challenge_added">
+						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+						<strong>Well done!</strong> Challenge has begun. 
+					</div>
+
+
+
+					<div class = 'well'>
+						<h4>Beer To Win</h4>
+						<h5>{{challenge.current_challenge.beer.name}}</h5>
+						<hr/>
+						
+						<h4>Options</h4>
+						<ul class = 'list-group'>
+							<li class = 'list-group-item' ng-repeat = 'beer in challenge.current_challenge.beer_selection'>
+								<h5>{{beer.name}}</h5>
+							</li>
+						</ul>
+						<hr/>
 	
+						<h4>Answer</h4>
+						<h5>{{challenge.current_challenge.answer.name}}</h5>
+						<hr/>
+						<button type = 'button' class = 'btn btn-danger' ng-click = "end_challenge()">End Challenge</button>
+					</div>
+	
+				</div>
+			</div>
+			
 
+			<div class = 'row'>
+				<div class = 'col-xs-10 col-xs-offset-1'>
+					<h4>Challenge Phone Numbers</h4>
+					<hr/>
+					<ul class = 'list-group'>
+						<li class = 'list-group-item' ng-repeat = 'number in challenge.phone_numbers track by $index'> {{number}}
+							<button class = 'btn  btn-xs right btn-danger' ng-click = "remove_phone_number(number)")>Delete</button>
+						</li>
+					</ul>
+				</div>
+			</div>
 
+		</div><!-- /container --> 
     
 		<script src="lib/lodash/dist/lodash.min.js"></script>
 		<script src="lib/angular/angular.min.js"></script>
