@@ -41,6 +41,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
       controller : 'seriesViewController',
       templateUrl: "templates/series.view.html"
     })
+    .state('midi', {
+      url: "/midi",
+      controller : 'midiController',
+      templateUrl: "templates/midi.html"
+    })
      .state('games.tapper', {
       url: "/games/tapper",
       controller : 'tapperController',
