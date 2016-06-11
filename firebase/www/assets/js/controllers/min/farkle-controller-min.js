@@ -1,1 +1,0 @@
-app.controller("farkleController",["$scope","$http",function(o,l){}]);

@@ -37,6 +37,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: "templates/tapper.html"
     })
    });
+});
+app.constant('APIURL', 'http://apis.mondorobot.com/')
 app.run(function(){
 });
 

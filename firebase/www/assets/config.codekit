@@ -33,7 +33,7 @@
 		},
 	"\/js\/app.js": {
 		"fileType": 64,
-		"ignore": 0,
+		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/js\/app.js",
 		"outputAbbreviatedPath": "\/js\/min\/app-min.js",
@@ -44,7 +44,7 @@
 		},
 	"\/js\/controllers\/farkle-controller.js": {
 		"fileType": 64,
-		"ignore": 0,
+		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/js\/controllers\/farkle-controller.js",
 		"outputAbbreviatedPath": "\/js\/controllers\/min\/farkle-controller-min.js",
@@ -55,7 +55,7 @@
 		},
 	"\/js\/controllers\/games-controller.js": {
 		"fileType": 64,
-		"ignore": 0,
+		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/js\/controllers\/games-controller.js",
 		"outputAbbreviatedPath": "\/js\/controllers\/min\/games-controller-min.js",
@@ -66,7 +66,7 @@
 		},
 	"\/js\/controllers\/home-controller.js": {
 		"fileType": 64,
-		"ignore": 0,
+		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/js\/controllers\/home-controller.js",
 		"outputAbbreviatedPath": "\/js\/controllers\/min\/home-controller-min.js",
@@ -75,53 +75,9 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
-	"\/js\/controllers\/min\/farkle-controller-min.js": {
-		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/js\/controllers\/min\/farkle-controller-min.js",
-		"outputAbbreviatedPath": "\/js\/controllers\/min\/min\/farkle-controller-min-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
-	"\/js\/controllers\/min\/games-controller-min.js": {
-		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/js\/controllers\/min\/games-controller-min.js",
-		"outputAbbreviatedPath": "\/js\/controllers\/min\/min\/games-controller-min-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
-	"\/js\/controllers\/min\/home-controller-min.js": {
-		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/js\/controllers\/min\/home-controller-min.js",
-		"outputAbbreviatedPath": "\/js\/controllers\/min\/min\/home-controller-min-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
-	"\/js\/controllers\/min\/tapper-controller-min.js": {
-		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/js\/controllers\/min\/tapper-controller-min.js",
-		"outputAbbreviatedPath": "\/js\/controllers\/min\/min\/tapper-controller-min-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
 	"\/js\/controllers\/tapper-controller.js": {
 		"fileType": 64,
-		"ignore": 0,
+		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/js\/controllers\/tapper-controller.js",
 		"outputAbbreviatedPath": "\/js\/controllers\/min\/tapper-controller-min.js",
@@ -130,12 +86,12 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
-	"\/js\/min\/app-min.js": {
+	"\/js\/services\/avery.js": {
 		"fileType": 64,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/js\/min\/app-min.js",
-		"outputAbbreviatedPath": "\/js\/min\/min\/app-min-min.js",
+		"inputAbbreviatedPath": "\/js\/services\/avery.js",
+		"outputAbbreviatedPath": "\/js\/services\/min\/avery-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -332,7 +288,7 @@
 	"jadeAutoOutputPathStyle": 0,
 	"jadeCompileDebug": 1,
 	"jadeOutputStyle": 0,
-	"javascriptAutoOutputPathEnabled": 1,
+	"javascriptAutoOutputPathEnabled": 0,
 	"javascriptAutoOutputPathFilenamePattern": "*-min.js",
 	"javascriptAutoOutputPathRelativePath": "\/min",
 	"javascriptAutoOutputPathReplace1": "",
