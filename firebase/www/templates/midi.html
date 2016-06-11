@@ -19,7 +19,7 @@
 	
 	<div class="row ptop-15" ng-if = "can_save">
 			<input type = 'input' class="form-control" ng-model = 'current_song.title' placeholder="Enter a Title" maxlength="10" />
-		<div class=" three-button">
+		<div class=" save-button">
 			<button type = 'button' ng-click = 'save_song(current_song)' ng-show = "can_save" class="btn-save"><i class="icon-save"></i></button>
 		</div><!-- .col -->
 	</div><!-- .row -->
@@ -30,7 +30,7 @@
 	<div class="row ptop-2" ng-if = 'showing_songs'>
 		<div class='row' ng-repeat = 'song in songs'>
 				<div class="song-title" ng-click = 'playback(song)'> <i class = ' icon-play'></i> {{ song.title != '' ? song.title : 'Untitled' }} </div>
-			<hr class = 'clearfix'/>
+			<div class = 'clearfix'></div>
 		</div><!-- .row -->
 	</div><!-- .row -->
 	

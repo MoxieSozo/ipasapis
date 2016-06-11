@@ -212,6 +212,36 @@
 		}
 	}
 }
+/* != Landscape Fix
+-------------------------------------------------------------- */
+.visible-landscape{
+	display:none;
+}
+.hidden-landscape{
+	display:block;
+}
+.landscape{
+	.visible-landscape{
+		display:block;
+	}
+	.hidden-landscape{
+		display:none;
+	}
+	.game-box{
+		>.vp-50{
+			height:auto;
+			width:50%;
+			display:block;
+			float:left;
+			margin-top:10px;
+			&.border-t{
+				border-top:none;
+				border-left:1px solid @gray-light;
+				padding-left:15px;
+			}
+		}
+	}
+}
 
 
 

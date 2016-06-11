@@ -393,8 +393,15 @@ select:focus {
   width: 100%;
   height: auto;
 }
+hr {
+  border: none;
+  border-top: 1px solid #ccc;
+}
 .red {
   color: #e31b23;
+}
+.gray {
+  color: #808080;
 }
 .clearfix {
   clear: both;
@@ -1000,6 +1007,32 @@ ui-view {
   right: -4%;
   top: 8%;
 }
+/* != Landscape Fix
+-------------------------------------------------------------- */
+.visible-landscape {
+  display: none;
+}
+.hidden-landscape {
+  display: block;
+}
+.landscape .visible-landscape {
+  display: block;
+}
+.landscape .hidden-landscape {
+  display: none;
+}
+.landscape .game-box > .vp-50 {
+  height: auto;
+  width: 50%;
+  display: block;
+  float: left;
+  margin-top: 10px;
+}
+.landscape .game-box > .vp-50.border-t {
+  border-top: none;
+  border-left: 1px solid #ccc;
+  padding-left: 15px;
+}
 @-webkit-keyframes winner {
   0% {
     opacity: 0;
@@ -1093,7 +1126,10 @@ button.btn-songs {
   color: #ccc;
 }
 .save-button {
-  width: 30%;
+  width: 49px;
+  margin-left: 3px;
+  display: block;
+  float: left;
 }
 .song-title {
   height: 50px;
@@ -1109,7 +1145,10 @@ button.btn-songs {
   padding: 8px 8px;
   line-height: 32px;
   font-size: 16px;
-  width: 70%;
+  width: calc(100% - 52px);
+  display: block;
+  float: left;
+  box-shadow: none;
 }
 .midi-button {
   height: 50px;
