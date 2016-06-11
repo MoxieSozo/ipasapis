@@ -62,6 +62,26 @@
 		"strictMath": 0,
 		"strictUnits": 0
 		},
+	"\/css\/midi.less": {
+		"allowInsecureImports": 0,
+		"createSourceMap": 0,
+		"disableJavascript": 0,
+		"fileType": 1,
+		"ieCompatibility": 1,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/css\/midi.less",
+		"outputAbbreviatedPath": "\/css\/midi.css",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"relativeURLS": 0,
+		"shouldRunAutoprefixer": 0,
+		"shouldRunBless": 0,
+		"strictImports": 0,
+		"strictMath": 0,
+		"strictUnits": 0
+		},
 	"\/css\/nav.less": {
 		"allowInsecureImports": 0,
 		"createSourceMap": 0,
@@ -321,7 +341,7 @@
 		"fileType": 32768,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"initialSize": 8527,
+		"initialSize": 21495,
 		"inputAbbreviatedPath": "\/img\/avery-logo.png",
 		"outputAbbreviatedPath": "\/img\/avery-logo.png",
 		"outputPathIsOutsideProject": 0,
@@ -650,7 +670,7 @@
 	},
 "hooks": [
 	],
-"lastSavedByUser": "Sean Bradley",
+"lastSavedByUser": "Joey Vestal",
 "manualImportLinks": {
 	},
 "projectAttributes": {
