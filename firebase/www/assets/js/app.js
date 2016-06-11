@@ -41,10 +41,20 @@ app.config(function($stateProvider, $urlRouterProvider) {
       controller : 'seriesViewController',
       templateUrl: "templates/series.view.html"
     })
+    .state('midi', {
+      url: "/midi",
+      controller : 'midiController',
+      templateUrl: "templates/midi.html"
+    })
      .state('games.tapper', {
       url: "/games/tapper",
       controller : 'tapperController',
       templateUrl: "templates/tapper.html"
+    })
+     .state('all_games', {
+      url: "/all_games",
+      controller : 'gamesController',
+      templateUrl: "templates/all_games.html"
     })
    });
 app.constant('APIURL', 'http://apis.mondorobot.com/')
@@ -73,7 +83,7 @@ app.controller('appController', ['$scope', '$http', '$firebaseAuth' , function( 
 	$('.toggler').on('click', function(){
 		$('.menu').removeClass('out');
 	});
-	$('.closer').on('click', function(){
+	$('.closer, .menu a').on('click', function(){
 		$('.menu').addClass('out');
 	});
 

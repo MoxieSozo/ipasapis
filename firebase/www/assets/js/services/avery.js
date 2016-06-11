@@ -14,6 +14,21 @@ app.service('averyService', ['$rootScope','$http', 'APIURL', '$q',  function($ro
 		})
 		return deferred.promise;
 	}
+
+	var get_barrel_beers  =  function(){
+	  var deferred = $q.defer();
+		$http.get(APIURL  +  '/barrel-aged-beers')
+		.success(function( data ){
+			console.log( data );
+			storage.barrel_beers = data.barrel_aged_beers;
+			deferred.resolve( storage.barrel_aged_beers )
+		})
+		.error(function( e ){
+			deferred.reject( e );
+		})
+		return deferred.promise;
+	}
+
 	
 
 	var get_all_series  =  function(){
@@ -47,7 +62,8 @@ app.service('averyService', ['$rootScope','$http', 'APIURL', '$q',  function($ro
 		storage							: storage, 
 		get_all_beers 			: get_all_beers,
 		get_all_series 			: get_all_series,
-		get_beer_series 		: get_beer_series
+		get_beer_series 		: get_beer_series,
+		get_barrel_beers 		: get_barrel_beers
 	}
 
 }])

@@ -364,26 +364,32 @@ a:hover {
 h1,
 .h1 {
   font-family: 'Montserrat', sans-serif;
+  font-size: 28px;
 }
 h2,
 .h2 {
   font-family: 'Montserrat', sans-serif;
+  font-size: 24px;
 }
 h3,
 .h3 {
   font-family: 'Montserrat', sans-serif;
+  font-size: 21px;
 }
 h4,
 .h4 {
   font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
 }
 h5,
 .h5 {
   font-family: 'EB Garamond', serif;
+  font-size: 21px;
 }
 h6,
 .h6 {
   font-family: 'EB Garamond', serif;
+  font-size: 16px;
 }
 h1,
 .h1,
@@ -398,14 +404,15 @@ h5,
 h6,
 .h6 {
   text-transform: uppercase;
+  margin-top: 0;
 }
 .container {
   width: 100%;
   padding-left: 15px;
   padding-right: 15px;
 }
-.container:first-child {
-  padding-top: 50px;
+.container > *:first-child {
+  padding-top: 90px;
 }
 [class^="vr-"],
 [class*=" vr-"] {
@@ -480,6 +487,21 @@ h6,
   top: 0;
   left: 0;
   width: 100%;
+}
+.navbar-custom .header .navbar-brand {
+  width: 70px;
+  height: 60px;
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  margin-left: -35px;
+  background-image: url(../img/avery-logo.png);
+  background-position: center center;
+  background-repeat: no-repeat;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  background-size: contain;
+  text-indent: -10000px;
 }
 .navbar-custom .header .toggler {
   position: absolute;
@@ -558,4 +580,7 @@ h6,
 }
 ui-view {
   height: 100%;
+}
+.intro {
+  text-align: center;
 }
