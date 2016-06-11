@@ -1,0 +1,128 @@
+.navbar-custom{
+	.header{
+		position:fixed;
+		top:0;
+		left:0;
+		width:100%;
+		height:70px;
+		background:@white;
+		z-index:999;
+		&:after{
+			content:'';
+			display:block;
+			position:absolute;
+			bottom:0;
+			left:15px;
+			width:~"calc(100% - 30px)";
+			height:1px;
+			border-bottom:1px solid @gray-light;
+		}
+		.navbar-brand{
+			width:70px;
+			height:60px;
+			position:absolute;
+			top:5px;
+			left:50%;
+			margin-left:-35px;
+			background-image:url(../img/avery-logo.png);
+			background-position:center center;
+			background-repeat:no-repeat;
+			.background-size(contain);
+			text-indent:-10000px;
+		}
+		.toggler{
+			position:fixed;
+			top:15px;
+			left:10px;
+			height:50px;
+			width:50px;
+			text-align:center;
+			line-height:50px;
+			z-index:9999;
+			span{
+				width:26px;
+				height:2px;
+				.border-radius(1px);
+				background:@black;
+				display:block;
+				position:absolute;
+				top:50%;
+				left:50%;
+				margin-top:-1px;
+				margin-left:-13px;
+				
+				&.dash-1{
+					margin-top:-10px;
+				}
+				&.dash-2{
+					
+				}
+				&.dash-3{
+					margin-top:8px;
+				}
+			}
+		}
+		.share{
+			position:absolute;
+			top:15px;
+			right:10px;
+			width:50px;
+			height:50px;
+			text-align:center;
+			line-height:50px;
+		}
+		i{
+			font-size:20px;
+			color:@black;
+		}
+	}
+	.menu{
+		list-style:none;
+		padding: 0 50px 50px 50px;
+		margin:0;
+		position:fixed;
+		top:0;
+		left:0;
+		height:100%;
+		width:100%;
+		display:block;
+		z-index:999;
+		background:fade(@gray-dark, 95%);
+		.transition(all .3s ease);
+		.menu-head{
+			.close{
+				.closer{
+					position:absolute;
+					top:15px;
+					left:10px;
+					height:50px;
+					width:50px;
+					text-align:center;
+					line-height:50px;
+					font-size:20px;
+					color:@white;
+				}
+			}
+		}
+		.item{
+			.transform-style(preserve-3d);
+			div{
+				position: relative;
+				top: 50%;
+				.transform(translateY(-50%));
+				display:block;
+				width:100%;
+				text-align:center;
+				a{
+					color:@white;
+					font-size:28px;
+					text-align:center;
+					text-transform:uppercase;
+				}
+			}
+		}
+		&.out{
+			.transform(translateX(-100%));
+		}
+	}
+}

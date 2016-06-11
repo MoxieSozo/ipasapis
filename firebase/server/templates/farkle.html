@@ -1,0 +1,32 @@
+<div class="game-box">
+	<div class="row vp-50 game-player">
+		<div class = 'red message'  >
+			<h3>{{message}}</h3>
+		</div><!-- .choose -->
+		<div ng-click = 'play_game()' class="choose" >
+			<h3>{{ !counting_down ? 'Play?' : countdown }}</h3>
+		</div><!-- .choose -->
+
+		
+		<div class="my-choice">
+			<i class="icon-barley"></i>
+		</div><!-- .my-choice -->
+		<div class="vs">vs</div><!-- .vs-choice -->
+		<div class="their-choice">
+			<i class=""></i>	
+		</div><!-- .their-choice -->
+	</div><!-- .vp-50 -->
+	<div class="row vp-50 border-t">
+		<div class="row text-center">
+			<h4 class="ptop-15">Rochambeer</h4>
+			<h4 class = 'red' ng-click ="play_game()" ng-show ="game_over && made_choice">Play Again?</h4>		
+			<p>Water boils Yeast. Yeast ferments Malt. Malt flavors Water. </p>
+		</div><!-- .row -->
+		<div class="rochambeer-controls" >
+			<img src="assets/img/rochambeer-bg.png" class="img">
+			<i class="icon-water item-1" data-num="1"></i>
+			<i class="icon-yeast item-2" data-num="2"></i>
+			<i class="icon-barley item-3" data-num="3"></i>
+		</div><!-- .rochambeer-controls -->
+	</div><!-- .vp-50 -->
+</div><!-- .game-box -->

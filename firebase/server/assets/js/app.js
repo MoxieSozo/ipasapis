@@ -18,8 +18,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('app', {
       url: "/",
-      controller : 'homeController',
-      templateUrl: "templates/home.html"
+      controller : 'adminController',
+      templateUrl: "templates/admin.html"
     })
     .state('games', {
       url: "/games",
@@ -97,11 +97,11 @@ app.controller('appController', ['$rootScope', '$scope', '$http', '$firebaseAuth
   });
 */
 	$('.toggler').on('click', function(){
-		$('.header').toggleClass('open');
+		$(this).toggleClass('on');
 		$('.menu').toggleClass('out');
 	});
-	$('.navbar-brand, .menu a').on('click', function(){
-		$('.header').removeClass('open');
+	$('.menu a').on('click', function(){
+		$('.toggler').removeClass('on');
 		$('.menu').addClass('out');
 	});
 
