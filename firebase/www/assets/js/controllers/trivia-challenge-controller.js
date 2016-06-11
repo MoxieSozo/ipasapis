@@ -32,9 +32,11 @@ app.controller('triviaChallengeController', ['$scope', '$http', 'averyService','
 				$scope.challenge.current_challenge.active = false;
 			}else{
 				$scope.challenge_lost = true;
+/*
 				$timeout(function(){
 					$state.go('/')
 				})
+*/
 			}
 			$scope.game_over = true;
 		}

@@ -76,8 +76,10 @@ app.run(['$rootScope', function( $rootScope ){
 app.controller('appController', ['$rootScope', '$scope', '$http', '$firebaseAuth' , '$firebaseArray', '$firebaseObject' , '$state', 
 	function( $rootScope, $scope, $http , $firebaseAuth, $firebaseArray, $firebaseObject , $state){
 
+/*
 		var declined_challenge = typeof(window.localStorage.declined_challenge) !== 'undefined' ? window.localStorage.declined_challenge : false;	
 		if(!declined_challenge){		
+*/
 			var localPhone = typeof(window.localStorage.phone_number) == 'undefined' ? false : window.localStorage.phone_number;
 	
 			var $challengeRef = firebase.database().ref().child('challenge');
@@ -106,12 +108,14 @@ app.controller('appController', ['$rootScope', '$scope', '$http', '$firebaseAuth
 								&& $scope.challenge.current_challenge.phone_number !== localPhone )){
 								return 
 							}
-							$('[ui-view]').before('#accept-challenge').css({
+							$('[ui-view]').before('#accept-challenge')/*
+.css({
 									'opacity': '1', 
 									'-webkit-transform': 'translateX(0)', 
 									'-moz-transform': 'translateX(0)', 
 									'transform': 'translateX(0)'
 								}).fadeIn();
+*/
 							$scope.show_challenge_modal = true;
 					}
 				}, true);
@@ -140,7 +144,7 @@ app.controller('appController', ['$rootScope', '$scope', '$http', '$firebaseAuth
 				window.localStorage.declined_challenge = true;
 				$('#accept-challenge').remove();
 			}
-		}
+// 		}
 	
 
 
