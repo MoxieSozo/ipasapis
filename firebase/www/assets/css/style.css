@@ -1177,6 +1177,9 @@ ui-view {
   background: rgba(227, 27, 35, 0.95);
   padding-top: 100px;
   opacity: 0;
+  -webkit-transform: translateX(-100%);
+  -moz-transform: translateX(-100%);
+  transform: translateX(-100%);
 }
 .form-control {
   border: 1px solid #ccc;
