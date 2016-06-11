@@ -59,20 +59,22 @@ button{
 	}
 }
 .song-title-row{
-	background:#eaeaea;
+	border:1px solid @gray-light;
 	padding-left:10px;
 	text-transform:uppercase;
 	&:hover, &:active{
-		box-shadow: 0px 0px 0px 3px #333;
+		border:1px solid @gray;
 	}
 }
 .song-title{
-	font-weight: bold;
 	//border:1px solid @gray-light;
 	height:50px;
 	padding:8px 0px;
 	line-height:32px;
-	font-size:16px;
+	font-family:@mont;
+	font-size:12px;
+	font-weight:bold;
+	text-transform:uppercase;
 	width:~"calc(77% - 2px)" !important;
 	display:block;
 }

@@ -1276,20 +1276,22 @@ button.btn-songs {
   float: left;
 }
 .song-title-row {
-  background: #eaeaea;
+  border: 1px solid #ccc;
   padding-left: 10px;
   text-transform: uppercase;
 }
 .song-title-row:hover,
 .song-title-row:active {
-  box-shadow: 0px 0px 0px 3px #333;
+  border: 1px solid #808080;
 }
 .song-title {
-  font-weight: bold;
   height: 50px;
   padding: 8px 0px;
   line-height: 32px;
-  font-size: 16px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
   width: calc(77% - 2px) !important;
   display: block;
 }
