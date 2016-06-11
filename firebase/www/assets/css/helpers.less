@@ -1,0 +1,103 @@
+/* != Clips
+-------------------------------------------------------------- */
+
+@mont: 'Montserrat', sans-serif;
+@garamond: 'EB Garamond', serif;
+
+/* != MIXINS
+-------------------------------------------------------------- */
+.border-radius(@radius){
+	-webkit-border-radius: @radius;
+	-moz-border-radius: @radius;
+	border-radius: @radius;
+}
+.background-size(@size){
+	-webkit-background-size: @size;
+	-moz-background-size: @size;
+	background-size: @size;
+}
+.transform-style(@style){
+	-webkit-transform-style: @style;
+	-moz-transform-style: @style;
+	transform-style: @style;
+}
+.transition(@tran){
+	-webkit-transition: @tran;
+	-moz-transition: @tran;
+	transition: @tran;
+}
+.transform(@trans){
+	-webkit-transform: @trans;
+	-moz-transform: @trans;
+	transform: @trans;
+}
+
+/* != Helpers
+-------------------------------------------------------------- */
+
+.mtop-0   { margin-top: 0px; }
+.mtop-10  { margin-top: 10px; }
+.mtop-20  { margin-top: 20px; }
+.mtop-30  { margin-top: 30px; }
+.mtop-40  { margin-top: 40px; }
+.mtop-50  { margin-top: 50px; }
+.mtop-60  { margin-top: 60px; }
+.mtop-70  { margin-top: 70px; }
+.mtop-80  { margin-top: 80px; }
+.mtop-90  { margin-top: 90px; }
+.mtop-100 { margin-top: 100px; }
+
+.mbottom-0   { margin-bottom: 0px; }
+.mbottom-10  { margin-bottom: 10px; }
+.mbottom-20  { margin-bottom: 20px; }
+.mbottom-30  { margin-bottom: 30px; }
+.mbottom-40  { margin-bottom: 40px; }
+.mbottom-50  { margin-bottom: 50px; }
+.mbottom-60  { margin-bottom: 60px; }
+.mbottom-70  { margin-bottom: 70px; }
+.mbottom-80  { margin-bottom: 80px; }
+.mbottom-90  { margin-bottom: 90px; }
+.mbottom-100 { margin-bottom: 100px; }
+
+.ptop-0   { padding-top: 0px; }
+.ptop-10  { padding-top: 10px; }
+.ptop-20  { padding-top: 20px; }
+.ptop-30  { padding-top: 30px; }
+.ptop-40  { padding-top: 40px; }
+.ptop-50  { padding-top: 50px; }
+.ptop-60  { padding-top: 60px; }
+.ptop-70  { padding-top: 70px; }
+.ptop-80  { padding-top: 80px; }
+.ptop-90  { padding-top: 90px; }
+.ptop-100 { padding-top: 100px; }
+
+.pbottom-0   { padding-bottom: 0px; }
+.pbottom-10  { padding-bottom: 10px; }
+.pbottom-20  { padding-bottom: 20px; }
+.pbottom-30  { padding-bottom: 30px; }
+.pbottom-40  { padding-bottom: 40px; }
+.pbottom-50  { padding-bottom: 50px; }
+.pbottom-60  { padding-bottom: 60px; }
+.pbottom-70  { padding-bottom: 70px; }
+.pbottom-80  { padding-bottom: 80px; }
+.pbottom-90  { padding-bottom: 90px; }
+.pbottom-100 { padding-bottom: 100px; }
+
+*{
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+html, body{
+	height:100%;
+}
+
+
+.vert-center{
+  	.transform-style(preserve-3d);
+	> * {
+		position: relative;
+		top: 50%;
+		.transform(translateY(-50%));
+	}
+}
