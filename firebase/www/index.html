@@ -35,7 +35,7 @@
     
 
 			
-		<div id = 'accept-challenge' class = 'text-center' ng-show = "show_challenge_modal" >
+		<div id = 'accept-challenge' class = 'text-center hide' ng-show = "show_challenge_modal" >
 			<div class="container text-center">
 				<div class="row">
 					<h1>Want Free Beer? </h1>
@@ -47,8 +47,8 @@
 						</div>
 						<div class="clearfix"></div>
 						<div class = 'row ptop-20'>
-							<button class = 'btn btn-success' type = 'button' ng-click= "accept_challenge()" >Yes Please!</button>
 							<button class = 'btn btn-danger' type = 'button' ng-click = "decline_challenge()" >Not Today. Thanks!</button>
+							<button class = 'btn btn-success' type = 'button' ng-click= "accept_challenge()" >Yes Please!</button>
 						</div>
 				
 					</form>
@@ -91,6 +91,6 @@
 
 		
     <script src="assets/js/controllers/midi-controller.js"></script>
-    <script src="//cdn.jsdelivr.net/phaser/2.2.2/phaser.min.js"></script>
+<!--     <script src="//cdn.jsdelivr.net/phaser/2.2.2/phaser.min.js"></script> -->
   </body>
 </html>

@@ -42,7 +42,7 @@
 					<div class="row" ng-hide = "timer < 1">
 						<div class="question-col">
 							<h4>Your Question</h4>
-							<h6>what dajfkhaldf you think wBOUT KDJHTthat sig ogsfiarsd? {{challenge.current_challenge.question}}</h6>
+							<h6>{{challenge.current_challenge.question}}</h6>
 						</div><!-- .col -->
 						<div class="img-col text-right">
 							<img ng-src = "{{challenge.current_challenge.beer.label_image.desktop}}" class="trivia-img" />
@@ -53,7 +53,9 @@
 						<div class = 'form-group'>
 							<h4>Your Answer</h4>
 							<div class="styled-select">
-								<select ng-model = 'answer' class = 'form-control'  ng-options = "beer as beer.name  for beer in challenge.current_challenge.beer_selection | orderBy:'name'" ></select>
+								<select ng-model = 'answer' class = 'form-control'  ng-options = "beer as beer.name  for beer in challenge.current_challenge.beer_selection | orderBy:'name'" >
+									<option value = '' selected="selected">Choose One</option>
+								</select>
 							</div><!-- .styled-select -->	
 							<button type = 'submit' class = 'btn btn-danger' ><i class="icon-next"></i></button>
 						</div><!-- // form-group --> 

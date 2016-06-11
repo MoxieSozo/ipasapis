@@ -58,7 +58,16 @@ button{
 	button{
 	}
 }
+.song-title-row{
+	background:#eaeaea;
+	padding-left:10px;
+	text-transform:uppercase;
+	&:hover, &:active{
+		box-shadow: 0px 0px 0px 3px #333;
+	}
+}
 .song-title{
+	font-weight: bold;
 	//border:1px solid @gray-light;
 	height:50px;
 	padding:8px 0px;
@@ -70,6 +79,7 @@ button{
 
 
 .midi-button{
+	color:white;
 	height: 50px;
 	width:~"calc(34% - 2px)";
 	height:30vw;
@@ -84,6 +94,9 @@ button{
 	padding:10px 12px;
 	position:relative;
 	.transition(all .1s ease);
+	&:hover{
+		
+	}
 	&:nth-of-type(3n+1){
 		margin-left:0;
 		width:~"calc(33% - 1px)";
@@ -103,7 +116,6 @@ button{
 		left:10px;
 		width:100%;
 		font-family:@mont;
-		color:@gray;
 		font-size:12px;
 		width:~"calc(100% - 20px)";
 		.transition(all .1s ease);
@@ -120,7 +132,7 @@ button{
 		height: 50px;
 	}
 	&:active{
-		background:@red;
+		background:@red !important;
 		color:@white;
 		footer{
 			color:@white;

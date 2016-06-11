@@ -1,7 +1,12 @@
-app.controller('triviaChallengeController', ['$scope', '$http', 'averyService','$interval',  
-	function($scope, $http, AS, $interval ){
+app.controller('triviaChallengeController', ['$scope', '$http', 'averyService','$interval', '$state',  
+	function($scope, $http, AS, $interval , $state ){
 
-	
+		try{
+			$scope.challenge.current_challenge.phone_number == window.localStorage.phone_number;
+		}catch( $e ){
+			$state.go('/');
+		}
+			
 		$scope.timer = 60;
 		
 		$scope.timer_clock = $interval(function(){
@@ -9,16 +14,16 @@ app.controller('triviaChallengeController', ['$scope', '$http', 'averyService','
 				$scope.timer -= 1;
 			}else{
 				$interval.cancel($scope.timer_clock);
+				$scope.challenge.current_challenge.phone_number = false;
 			}
-			console.log($scope.timer);
 		}, 1000)
 		
 		$scope.submit_answer = function(){
+			$interval.cancel($scope.timer_clock);
 			if($scope.challenge.current_challenge.answer.id == $scope.answer.id){
-				alert('you won')
 				$scope.challenge_won = true;
+				$scope.challenge.current_challenge.active = false;
 			}else{
-				alert( 'you lost')
 				$scope.challenge_lost = true;
 			}
 			$scope.game_over = true;

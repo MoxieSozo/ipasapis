@@ -21,6 +21,13 @@ app.controller('midiController', ['$scope', '$http', '$timeout','averyService', 
 				if(beer.note > 100) beer.note = 100;
 				if(notes.indexOf(beer.note) == -1){
 					notes.push(beer.note);
+					beer.color = {
+						r : parseFloat(beer.price_per_growler) * 10,
+						b : parseFloat(beer.price_per_glass) * 10,
+						g : parseFloat(beer.abv) * 10,
+					}
+					
+					console.log(beer.hex)
 					beers_coll.push(beer);
 				}
 			})
@@ -29,6 +36,7 @@ app.controller('midiController', ['$scope', '$http', '$timeout','averyService', 
 			})
 			$scope.beers = beers_coll;
 			$scope.beers_ready = true;
+			console.log($scope.beers);
 		},
 		function( error ){
 		}
@@ -129,6 +137,15 @@ app.controller('midiController', ['$scope', '$http', '$timeout','averyService', 
 	
 }])
 
+function componentToHex(c) {
+    var hex = c.toString(16);
+    return hex.length == 1 ? "0" + hex : hex;
+}
+
+
+function rgbToHex(r, g, b) {
+    return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+}
 
 
 

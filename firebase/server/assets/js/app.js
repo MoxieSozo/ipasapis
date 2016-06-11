@@ -105,7 +105,6 @@ app.controller('appController', ['$rootScope', '$scope', '$http', '$firebaseAuth
 		}
 		
 		$scope.remove_phone_number = function( $phone_number ){
-			alert($phone_number)
 			_.remove($scope.challenge.phone_numbers, function($phone){
 				return $phone == $phone_number
 			});
