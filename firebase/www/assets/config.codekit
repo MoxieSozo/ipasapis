@@ -301,9 +301,20 @@
 		"fileType": 32768,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"initialSize": 8527,
+		"initialSize": 21495,
 		"inputAbbreviatedPath": "\/img\/avery-logo.png",
 		"outputAbbreviatedPath": "\/img\/avery-logo.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/img\/rochambeer-bg.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 5832,
+		"inputAbbreviatedPath": "\/img\/rochambeer-bg.png",
+		"outputAbbreviatedPath": "\/img\/rochambeer-bg.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -454,7 +465,7 @@
 	},
 "hooks": [
 	],
-"lastSavedByUser": "Sean Bradley",
+"lastSavedByUser": "Joey Vestal",
 "manualImportLinks": {
 	},
 "projectAttributes": {

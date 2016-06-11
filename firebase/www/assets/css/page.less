@@ -4,5 +4,67 @@ ui-view{
 
 .intro{
 	text-align:center;
+}
+.sub-page{
+	height:~"calc(100% - 130px)";
+}
+.sub-nav{
+	border-top:1px solid @gray-light;
+	list-style:none;
+	padding-left:0;
+	text-align:center;
+	margin:0;
+	li{
+		display:inline-block;
+		float:none;
+		padding:10px;
+		min-width:30px;
+		text-aign:center;
+		i{
+			color:@gray;
+			font-size:30px;
+		}
+	}
+}
+.game-player{
 	
+}
+.game-box{
+	height:100%;
+	.rochambeer-controls{
+		//background-image:url(../img/rochambeer-bg.png);
+		background-position:center center;
+		background-repeat:no-repeat;
+		.background-size(contain);
+		width:150px;
+		margin:0 auto;
+		position:relative;
+		.item-1,.item-2,.item-3{
+			position:absolute;
+			font-size:45px;
+			width:45px;
+			height:45px;
+			line-height:45px;
+			text-align:center;
+			display:block;
+			.transition(all .3s ease);
+			&.active{
+				color:@red;
+				.transform(scale(1.15));
+			}
+		}
+		.item-1{
+			left:-4%;
+			top:8%;
+		}
+		.item-2{
+			left:34%;
+			bottom:-4%;
+		}
+		.item-3{
+			right:-4%;
+			top:8%;
+			
+		}
+	}
 }
