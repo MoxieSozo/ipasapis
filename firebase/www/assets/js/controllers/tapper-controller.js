@@ -1,13 +1,24 @@
 app.controller('tapperController', ['$scope', '$http', function( $scope, $http ){
-	var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update });
+	var game = new Phaser.Game(800, 600, Phaser.AUTO, 'game', { preload: preload, create: create, update: update });
         
         function preload() {
         
             game.load.image('sky', 'assets/images/sky.png');
             game.load.image('ground', 'assets/images/platform.png');
-            game.load.image('star', 'assets/images/hop.svg');
+            game.load.image('hop', 'assets/images/hop.svg');
             // what else to add
             game.load.spritesheet('dude', 'assets/images/dude.png', 32, 48);
+            
+            
+            game.load.spritesheet('buttonright', 'assets/images/button.svg',120,120);
+		    game.load.spritesheet('buttonleft', 'assets/images/button.svg',120,120);
+		    game.load.spritesheet('buttondiagonal', 'assets/images/button.svg',120,120);
+		    game.load.spritesheet('buttonfire', 'assets/images/button.svg',120,120);
+		    game.load.image('buttonjump', 'assets/images/button.svg',120,120);
+            
+            //full screen
+            game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+			game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
         
         }
         
@@ -15,16 +26,22 @@ app.controller('tapperController', ['$scope', '$http', function( $scope, $http )
         var platforms;
         var cursors;
         
-        var stars;
-        var jump = false;
+        var hops;
+        var left = false;
+        var right = false;
+        var up = jump = false;
         var drop = false;
-        var score = 0;
+        var totalHops = 0;
         var scoreText;
         
         function create() {
-        
+        	if (!game.device.desktop){ game.input.onDown.add(gofull, this); } //go fullscreen on mobile devices
+        	
+        	
             //  We're going to be using physics, so enable the Arcade Physics system
             game.physics.startSystem(Phaser.Physics.ARCADE);
+            game.physics.arcade.y = 900;
+            console.log(game.physics);
         
             //  A simple background for our game
             game.add.sprite(0, 0, 'sky');
@@ -66,53 +83,59 @@ app.controller('tapperController', ['$scope', '$http', function( $scope, $http )
             player.animations.add('left', [0, 1, 2, 3], 10, true);
             player.animations.add('right', [5, 6, 7, 8], 10, true);
         
-            //  Finally some stars to collect
-            stars = game.add.group();
+            //  Finally some hops to collect
+            hops = game.add.group();
         
-            //  We will enable physics for any star that is created in this group
-            stars.enableBody = true;
+            //  We will enable physics for any hop that is created in this group
+            hops.enableBody = true;
         
-            //  Here we'll create 12 of them evenly spaced apart
-            for (var i = 0; i < 12; i++)
+            // create the hops
+            for (var i = 0; i < 3; i++)
             {
                 //  Create a star inside of the 'stars' group
-                var star = stars.create(i * 70, 0, 'star');
+                var hop = hops.create(i * 290, 0, 'hop');
         
                 //  Let gravity do its thing
-                star.body.gravity.y = 900;
+                hop.body.gravity.y = 900;
         
-                //  This just gives each star a slightly random bounce value
-                star.body.bounce.y = 0.2 + Math.random() * 0.2;
+                //  This just gives each hop a slightly random bounce value
+                hop.body.bounce.y = 0.1 + Math.random() * 0.2;
             }
         
             //  The score
-            scoreText = game.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
+            hopText = game.add.text(16, 16, 'Hops: 0', { fontSize: '32px', fill: '#FFF' });
+            wheatText = game.add.text(16, 48, 'Wheat: 0', { fontSize: '32px', fill: '#FFF' });
         
-            //  Our controls.
+            //  Our controls
+            // Desktop / keyboard
             cursors = game.input.keyboard.createCursorKeys();
+            
+            // mobile buttons
+			build_buttons();            
+         
             
         }
         
         function update() {
         
-            //  Collide the player and the stars with the platforms
+            //  Collide the player and the hops with the platforms
             game.physics.arcade.collide(player, platforms);
-            game.physics.arcade.collide(stars, platforms);
+            game.physics.arcade.collide(hops, platforms);
         
-            //  Checks to see if the player overlaps with any of the stars, if he does call the collectStar function
-            game.physics.arcade.overlap(player, stars, collectStar, null, this);
+            //  Checks to see if the player overlaps with any of the hops, if he does call the collectHop function
+            game.physics.arcade.overlap(player, hops, collectHop, null, this);
         
             //  Reset the players velocity (movement)
             player.body.velocity.x = 0;
         
-            if (cursors.left.isDown)
+            if (cursors.left.isDown || left )
             {
                 //  Move to the left
                 player.body.velocity.x = -150;
         
                 player.animations.play('left');
             }
-            else if (cursors.right.isDown)
+            else if (cursors.right.isDown || right )
             {
                 //  Move to the right
                 player.body.velocity.x = 150;
@@ -132,19 +155,67 @@ app.controller('tapperController', ['$scope', '$http', function( $scope, $http )
             {
                 player.body.velocity.y = -350;
             }
+            
+            if (jump){ jump_now(); } 
         
         }
         
-        function collectStar (player, star) {
+        function collectHop (player, hop) {
             
-            // Removes the star from the screen
-            star.kill();
+            // Removes the hop from the screen
+            hop.kill();
         
             //  Add and update the score
-            score += 1;
-            scoreText.text = 'Hops Collected: ' + score;
+            totalHops += 1;
+            hopText.text = 'Hops Collected: ' + totalHops;
         
         }
+        
+        function gofull() { game.scale.startFullScreen(false); }
+		
+		function jump_now(){  //jump with small delay
+			player.body.velocity.y = -350;
+/*
+		    
+		    if (game.time.now > nextJump ){
+		        player.body.moveUp(600);
+		        nextJump = game.time.now + 900;
+		    }
+*/
+		}
+		
+		function build_buttons() {
+			var buttonPos = {
+				jump: [600,550],
+				left: [100,550],
+				right: [150,550]
+			};
+			
+			// jump
+			buttonjump = game.add.button(buttonPos.jump[0], buttonPos.jump[1], 'buttonjump', null, this, 0, 1, 0, 1);  //game, x, y, key, callback, callbackContext, overFrame, outFrame, downFrame, upFrame
+			buttonjump.fixedToCamera = true;  //our buttons should stay on the same place  
+			buttonjump.events.onInputOver.add(function(){jump=true;});
+			buttonjump.events.onInputOut.add(function(){jump=false;});
+			buttonjump.events.onInputDown.add(function(){jump=true;});
+			buttonjump.events.onInputUp.add(function(){jump=false;});
+			
+			//left
+			buttonleft = game.add.button(buttonPos.left[0], buttonPos.left[1], 'buttonleft', null, this, 0, 1, 0, 1);  //game, x, y, key, callback, callbackContext, overFrame, outFrame, downFrame, upFrame
+			buttonleft.fixedToCamera = true;  //our buttons should stay on the same place  
+			buttonleft.events.onInputOver.add(function(){left=true;});
+			buttonleft.events.onInputOut.add(function(){left=false;});
+			buttonleft.events.onInputDown.add(function(){left=true;});
+			buttonleft.events.onInputUp.add(function(){left=false;});
+			
+			//right
+			buttonright = game.add.button(buttonPos.right[0], buttonPos.right[1], 'buttonright', null, this, 0, 1, 0, 1);  //game, x, y, key, callback, callbackContext, overFrame, outFrame, downFrame, upFrame
+			buttonright.fixedToCamera = true;  //our buttons should stay on the same place  
+			buttonright.events.onInputOver.add(function(){right=true;});
+			buttonright.events.onInputOut.add(function(){right=false;});
+			buttonright.events.onInputDown.add(function(){right=true;});
+			buttonright.events.onInputUp.add(function(){right=false;});
+
+		} 
 
 	
 }])
