@@ -502,7 +502,7 @@ h6,
 }
 .navbar-custom .menu {
   list-style: none;
-  padding: 50px;
+  padding: 0 50px 50px 50px;
   margin: 0;
   position: fixed;
   top: 0;
@@ -515,6 +515,17 @@ h6,
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   transition: all 0.3s ease;
+}
+.navbar-custom .menu .menu-head .close .closer {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  line-height: 50px;
+  font-size: 20px;
+  color: #fff;
 }
 .navbar-custom .menu .item {
   -webkit-transform-style: preserve-3d;
