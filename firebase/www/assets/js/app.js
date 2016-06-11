@@ -86,9 +86,11 @@ app.controller('appController', ['$scope', '$http', '$firebaseAuth' , function( 
   });
 */
 	$('.toggler').on('click', function(){
-		$('.menu').removeClass('out');
+		$(this).toggleClass('on');
+		$('.menu').toggleClass('out');
 	});
-	$('.closer, .menu a').on('click', function(){
+	$('.menu a').on('click', function(){
+		$('.toggler').removeClass('on');
 		$('.menu').addClass('out');
 	});
 
