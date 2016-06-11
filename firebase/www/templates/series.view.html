@@ -1,0 +1,19 @@
+<div class = 'container'>
+	<div class = 'row'>
+		<div class = 'col-xs-12'>
+			<h1>{{series.name}}</h1>
+		</div>
+	</div>
+	<div class = 'row {{beer.id}}' ng-repeat = 'beer in series.beers'>
+		<div class = 'col-xs-12 '>
+			<div class = 'well'>
+				<h3>{{beer.name}}</h3>
+				<hr/>
+				<img ng-src = "{{beer.label_image.desktop}}"/>
+				<h4>{{beer.style}}</h4>
+				<b>Price Per Glass : </b>{{beer.price_per_glass}}<br/>
+				<b>Price Per Growler : </b>{{beer.price_per_growler}}
+			</div>
+		</div>
+	</div>
+</div>

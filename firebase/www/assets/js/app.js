@@ -31,6 +31,16 @@ app.config(function($stateProvider, $urlRouterProvider) {
       controller : 'farkleController',
       templateUrl: "templates/farkle.html"
     })
+    .state('beers', {
+      url: "/beers",
+      controller : 'beersController',
+      templateUrl: "templates/beers.html"
+    })
+    .state('seriesView', {
+      url: "/series/:series_id",
+      controller : 'seriesViewController',
+      templateUrl: "templates/series.view.html"
+    })
      .state('games.tapper', {
       url: "/games/tapper",
       controller : 'tapperController',
