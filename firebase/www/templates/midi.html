@@ -4,9 +4,11 @@
 			<h4 class="ptop-15">Record your Beer Midi</h4>
 		</div><!-- .col -->
 		<div class="col three-button ptop-10 text-right" ng-show = "sound_ready && beers_ready">
+			<button type = 'button' ng-click = "show_songs()" class = 'btn-songs' ng-if = "songs.length > 0" ><i class="icon-check"></i></button>
 			<button type = 'button' ng-click = 'start_recording()' class = 'btn-start' ng-show = "!recording"><i class="icon-record"></i></button>
 			<button type = 'button' ng-click = 'stop_recording()' class = 'btn-stop' ng-show = 'recording'><i class="icon-stop"></i></button>
-			
+			<button type = 'button' ng-click = 'playback(current_song)' ng-show = "!playing && can_save "><i class="icon-play"></i></button>
+			<button type = 'button' ng-click = 'stopPlayback(current_song)' ng-show = "playing && can_save"><i class="icon-stop"></i></button>
 		</div><!-- .col -->
 	</div><!-- .row -->
 	<div class="row  text-right ptop-15" ng-show = "!sound_ready">
@@ -16,14 +18,9 @@
 	<div class="clearfix"></div>
 	
 	<div class="row ptop-15" ng-if = "can_save">
-		<div class="col">
 			<input type = 'input' class="form-control" ng-model = 'current_song.title' placeholder="Enter a Title" maxlength="10" />
-		</div><!-- .col -->
-		<div class="col three-button">
+		<div class=" three-button">
 			<button type = 'button' ng-click = 'save_song(current_song)' ng-show = "can_save" class="btn-save"><i class="icon-save"></i></button>
-			<button type = 'button' ng-click = "show_songs()" class = 'btn-songs' ng-if = "songs.length > 0" ><i class="icon-check"></i></button>
-			<button type = 'button' ng-click = 'playback(current_song)' ng-show = "!playing"><i class="icon-play"></i></button>
-			<button type = 'button' ng-click = 'stopPlayback(current_song)' ng-show = "playing"><i class="icon-stop"></i></button>
 		</div><!-- .col -->
 	</div><!-- .row -->
 	
@@ -32,19 +29,18 @@
 	
 	<div class="row ptop-2" ng-if = 'showing_songs'>
 		<div class='row' ng-repeat = 'song in songs'>
-			<div class="col">
-				<span class="song-title" ng-click = 'playback(song)'>Play {{ song.title != '' ? song.title : 'Untitled' }} </span>
-			</div>		
+				<div class="song-title" ng-click = 'playback(song)'> <i class = ' icon-play'></i> {{ song.title != '' ? song.title : 'Untitled' }} </div>
+			<hr class = 'clearfix'/>
 		</div><!-- .row -->
 	</div><!-- .row -->
 	
 	<!-- !=====================  SONGS  =====================! -->
 	<div class="clearfix"></div>
 	
-	<div class="row ptop-15">
-		<div ng-repeat="beer in beers" class="midi-button">
+	<div class="row ptop-15 clearfix">
+		<div ng-repeat="beer in beers" class="midi-button" ng-click = 'play_note(beer.note)'>
 		<!--<div class = 'beer-image' style = "background-image:url({{beer.label_image.desktop}})"></div>-->
-			<div class="title" ng-click = 'play_note(beer.note)' ng-if = 'sound_ready'>
+			<div class="title"  ng-if = 'sound_ready'>
 				<p>{{beer.name}}</p>
 				<footer>ABV: {{beer.abv}}
 				<i class="icon-play"></i>

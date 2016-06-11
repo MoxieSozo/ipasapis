@@ -396,6 +396,15 @@ select:focus {
 .red {
   color: #e31b23;
 }
+.clearfix {
+  clear: both;
+}
+.right {
+  float: right;
+}
+.left {
+  float: left;
+}
 * {
   font-family: 'EB Garamond', serif;
   font-size: 14px;
@@ -991,7 +1000,7 @@ button.btn-songs {
   padding: 8px 0px;
   line-height: 32px;
   font-size: 16px;
-  width: calc(100% - 2px);
+  width: calc(77% - 2px) !important;
   display: block;
 }
 .form-control {
