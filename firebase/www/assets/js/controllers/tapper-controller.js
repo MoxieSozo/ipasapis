@@ -16,6 +16,8 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 	var water; // todo
 	var heat; // todo
 	var processor; 
+	var lever;
+	var lvr;
 	var yourBrew; // todo
 	var yourBrewText; // todo
 	var interact = false;
@@ -30,6 +32,7 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 	var grainText;
 	var hasYeast = false;
 	var processorText;
+	
 	
 	
 	
@@ -68,10 +71,10 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 	 */
 	function preload() {
 	
-		game.load.image('sky', 		'assets/img/tapper/mountains.png');
+		game.load.image('sky', 		'assets/img/tapper/videogame-retina.jpg');
 		game.load.image('concrete', 	'assets/img/tapper/platform-red.png');
 		game.load.image('ground', 	'assets/img/tapper/platform-red.png');
-		game.load.image('clouds', 	'assets/img/tapper/clouds.png');
+		game.load.image('clouds', 	'assets/img/tapper/clouds-dark.png');
 		//game.load.image('city', 	'assets/img/tapper/city.png');
 		game.load.image('tree', 	'assets/img/tapper/tree.png');
 		game.load.image('hop', 		'assets/img/tapper/hop.svg');
@@ -79,13 +82,13 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 		game.load.image('yeast', 		'assets/img/tapper/yeast.svg');
 		//game.load.image('water', 		'assets/img/tapper/hop.svg');
 		//game.load.image('flower', 		'assets/img/tapper/hop.svg');
-		game.load.image('processor', 		'assets/img/tapper/processor_crop.svg');
+		game.load.image('processor', 		'assets/img/tapper/tank.png');
 		game.load.image('silo', 		'assets/img/tapper/silos.svg');
 		
 		
 		// what else to add
 		game.load.spritesheet('dude', 'assets/img/tapper/drinker.png', 32, 48);
-		
+		game.load.spritesheet('lever', 'assets/img/tapper/control-sprite.png', 85, 85);
 		game.load.spritesheet('buttonright', 'assets/img/tapper/ui-right.png',150,150);
 		game.load.spritesheet('buttonleft', 'assets/img/tapper/ui-left.png',150,150);
 		game.load.spritesheet('buttoninteract', 'assets/img/tapper/ui-interact.png',150,150);
@@ -113,22 +116,25 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 		game.physics.startSystem(Phaser.Physics.ARCADE);
 		game.physics.arcade.y = 900;
 	
+				
 		//	A simple background for our game
-		var sky = game.add.sprite(0,0, 'sky');
-		sky.scale.x = 2;
-		sky.scale.x = 1.5;
+		var sky = game.add.sprite(0,70, 'sky');
+		sky.scale.x = .9;
+		sky.scale.y = .75;
 		
+/*
+		clouds = game.add.group();
+		clouds.enableBody = false;
+		var cloud1 = clouds.create(900, 120, 'clouds');
+		var cloud_inMotion = game.add.tween(cloud1);
+		cloud_inMotion.to({ x: -200 }, 30000, 'Linear', true, 0);
+*/
+
 		
 		//	The platforms group contains the ground and the 2 ledges we can jump on
 		platforms = game.add.group();
 		platforms.enableBody = true;
 		
-		clouds = game.add.group();
-		clouds.enableBody = false;
-		var cloud1 = clouds.create(900, 120, 'clouds');
-		
-		var cloud_inMotion = game.add.tween(cloud1);
-		cloud_inMotion.to({ x: -200 }, 30000, 'Linear', true, 0);
 		
 		
 		// Here we create the ground.
@@ -151,6 +157,35 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 		//silo.scale.setTo(.125,.125);
 		//var city = buildings.create(700, 200, 'city');
 		
+		// Process
+		processor = game.add.group();
+		processor.enableBody = true;
+		// create the processor
+		
+		var machine = processor.create(30, 280, 'processor');
+		machine.scale.setTo(.75,.75);
+		machine.body.collideWorldBounds = true;
+	
+		machine.body.gravity.y = 800;
+		machine.body.bounce.y = .1;
+		
+		lvr = processor.create(145, 432, 'lever');
+		lvr.body.collideWorldBounds = true;
+		lvr.animations.add('activate', [0, 2, 4], 10, false);
+	
+		processorText = game.add.text(300, 600, 'Collect ingredients to brew a beer', { fontSize: '24px', fill: '#FFF' });
+		
+		setTimeout(function() {
+			processorText.text = '';
+
+		}, 3000)
+		
+/*
+		lever = game.add.sprite(145,432 , 'lever');
+		
+		lever.animations.add('activate', [1, 3, 5], 10, true);
+		
+*/
 		
 		// The player aka brewer
 		player = game.add.sprite(450, game.world.height - 200, 'dude');
@@ -225,18 +260,7 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 		
 		
 		
-		// Process
-		processor = game.add.group();
-		processor.enableBody = true;
-		// create the processor
 		
-		var machine = processor.create(30, 280, 'processor');
-		machine.scale.setTo(.5,.5);
-	
-		machine.body.gravity.y = 800;
-		machine.body.bounce.y = .1;
-	
-		processorText = game.add.text(400, 10, 'Collect ingredients to brew a beer', { fontSize: '44px', fill: '#FFF' });
 		
 
 		//	Our controls
@@ -265,6 +289,7 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 		game.physics.arcade.overlap(player, grains, collectGrain, null, this);
 		game.physics.arcade.overlap(player, yeasts, collectYeast, null, this);
 		game.physics.arcade.overlap(player, processor, processIngredients, null, this);
+		//game.physics.arcade.overlap(player, lever, processIngredients, null, this);
 	
 		//	Reset the players velocity (movement)
 		player.body.velocity.x = 0;
@@ -277,9 +302,11 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 	
 			player.animations.play('left');
 			
+/*
 			setTimeout( function() {
 				processorText.scale.setTo(0,0);
 			}, 1500 );
+*/
 		}
 		else if (cursors.right.isDown || right )
 		{
@@ -287,9 +314,11 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 			player.body.velocity.x = 150;
 			player.animations.play('right');
 			
+/*
 			setTimeout( function() {
 				processorText.scale.setTo(0,0);
 			}, 1500 );
+*/
 			
 		}
 		else
@@ -334,16 +363,21 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 	 */
 	function collectHop (player, hop) {
 		
-		// Removes the hop from the screen
-		hop.kill();
-	
-		//	Add and update the score
-		hopTotal += 1;
-		hopText.text = 'Hops Collected: ' + hopTotal;
-		$scope.recipe.hops = hopTotal;
-		$scope.$apply();
-		console.log($scope.recipe.hops);
+		if( interact || cursors.down.isDown ) {
 			
+			// Removes the hop from the screen
+			hop.kill();
+		
+			//	Add and update the score
+			hopTotal += 1;
+			hopText.text = 'Hops Collected: ' + hopTotal;
+			$scope.recipe.hops = hopTotal;
+			$scope.$apply();
+			console.log($scope.recipe.hops);
+
+			
+		}
+					
 	}
 	
 	/**
@@ -356,15 +390,16 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 	 */
 	function collectGrain (player, grain) {
 		
-		// Removes the hop from the screen
-		grain.kill();
-	
-		//	Add and update the score
-		grainTotal += 1;
-		grainText.text = 'Grains Collected: ' + grainTotal;
-		$scope.recipe.grains = grainTotal;
-		$scope.$apply();
-		console.log($scope.recipe);
+		if( interact || cursors.down.isDown ) {
+			grain.kill();
+		
+			//	Add and update the score
+			grainTotal += 1;
+			grainText.text = 'Grains Collected: ' + grainTotal;
+			$scope.recipe.grains = grainTotal;
+			$scope.$apply();
+			console.log($scope.recipe);
+		}
 	}
 	
 	
@@ -378,17 +413,19 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 	 */
 	function collectYeast (player, yeast) {
 		
-		yeast.kill();
-		
-		// Removes the hop from the screen
-		if( !hasYeast ) {
+		if( interact || cursors.down.isDown ) {
+			yeast.kill();
 			
-			//	Add and update the score
-			hasYeast = true;
-			yeastText.text = 'Yeast Collected: Yes';
-			$scope.recipe.yeast = true;
-			$scope.$apply();
-			console.log($scope.recipe);
+			// Removes the hop from the screen
+			if( !hasYeast ) {
+				
+				//	Add and update the score
+				hasYeast = true;
+				yeastText.text = 'Yeast Collected: Yes';
+				$scope.recipe.yeast = true;
+				$scope.$apply();
+				console.log($scope.recipe);
+			}
 		}
 	
 	}
@@ -407,16 +444,27 @@ app.controller('tapperController', ['$scope', '$http', 'averyService', function(
 			
 			
 			if( $scope.recipe.processing !== true && canProcess == true ) {
+				
 				processorText.text = 'Ingredients added.  Time to Brew! ';
-				processorText.fontSize = '50px'; //, fill: '#F00' 
+				//processorText.fontSize = '36px'; //, fill: '#F00' 
+				
+				//lvr.animations.play('activate');
+				lvr.animations.play('activate');
+				
+				
 				$scope.recipe.processing = true;
 				$scope.$apply();
 				
 				setTimeout(function() {
 					var ran = Math.floor(Math.random() * beers.length );
 					
-					var yourBrewText = game.add.text(300, 300, 'You brewed: ' + beers[ran].name, { fontSize: '44px', fill: '#FFF' });
+					processorText.text = 'You brewed: ' + beers[ran].name;
+				
 				}, 500);
+				
+				
+			} else {
+				processorText.text = 'More ingredients needed. ';
 				
 				
 			}
