@@ -1272,13 +1272,14 @@ button.btn-songs {
   float: left;
 }
 .song-title-row {
+  cursor: pointer;
   background: #eaeaea;
   padding-left: 10px;
   text-transform: uppercase;
 }
 .song-title-row:hover,
 .song-title-row:active {
-  box-shadow: 0px 0px 0px 3px #333;
+  box-shadow: 0px 0px 0px 2px rgba(155, 155, 155, 0.5);
 }
 .song-title {
   font-weight: bold;
@@ -1290,6 +1291,7 @@ button.btn-songs {
   display: block;
 }
 .midi-button {
+  cursor: pointer;
   color: white;
   height: 50px;
   width: calc(34% - 2px);
@@ -1316,6 +1318,7 @@ button.btn-songs {
   width: calc(33% - 1px);
 }
 .midi-button .title {
+  font-weight: bold;
   width: 100%;
   height: 100%;
 }
