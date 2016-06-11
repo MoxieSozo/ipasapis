@@ -44,9 +44,10 @@
 		<div ng-repeat="beer in beers" class="midi-button">
 		<!--<div class = 'beer-image' style = "background-image:url({{beer.label_image.desktop}})"></div>-->
 			<div class="title" ng-click = 'play_note(beer.note)' ng-if = 'sound_ready'>
-				<b>{{beer.name}}</b><br/>
-				<b>ABV </b>: {{beer.abv}}
+				<p>{{beer.name}}</p>
+				<footer>ABV: {{beer.abv}}
 				<i class="icon-play"></i>
+				</footer>
 			</div>
 				
 		</div>

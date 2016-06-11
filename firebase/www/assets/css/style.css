@@ -544,6 +544,7 @@ p {
   width: 100%;
   height: 70px;
   background: #fff;
+  z-index: 999;
 }
 .navbar-custom .header:after {
   content: '';
@@ -924,7 +925,10 @@ button.btn-songs {
   margin-left: 1px;
   margin-top: 2px;
   padding: 10px 12px;
-  position: realtive;
+  position: relative;
+  -webkit-transition: all 0.1s ease;
+  -moz-transition: all 0.1s ease;
+  transition: all 0.1s ease;
 }
 .midi-button:nth-of-type(3n+1) {
   margin-left: 0;
@@ -938,10 +942,36 @@ button.btn-songs {
   width: 100%;
   height: 100%;
 }
+.midi-button footer {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  width: 100%;
+  font-family: 'Montserrat', sans-serif;
+  color: #808080;
+  font-size: 12px;
+  width: calc(100% - 20px);
+  -webkit-transition: all 0.1s ease;
+  -moz-transition: all 0.1s ease;
+  transition: all 0.1s ease;
+}
+.midi-button footer i {
+  font-size: 10px;
+  position: absolute;
+  right: 0;
+  top: 2px;
+}
 .midi-button .controls {
   width: 30%;
   float: right;
   height: 50px;
+}
+.midi-button:active {
+  background: #e31b23;
+  color: #fff;
+}
+.midi-button:active footer {
+  color: #fff;
 }
 #game.tapper {
   position: fixed;
