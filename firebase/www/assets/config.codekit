@@ -337,6 +337,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/images\/videogame.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 10312,
+		"inputAbbreviatedPath": "\/images\/videogame.png",
+		"outputAbbreviatedPath": "\/images\/videogame.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/img\/avery-logo.png": {
 		"fileType": 32768,
 		"ignore": 0,
